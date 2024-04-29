@@ -58,3 +58,11 @@ Also explore
     3. gRPC
     4. AJAX: AJAX - Asynchronous javascript and XML 🤯. | AJAX is used for dynamic updation of UI without the need to reload the page. | ⚠️ MUST LEARN
     5. Web Socket: Real-time communication, communication is bi-directional.
+
+
+### Optimizing API:
+> [Link YT Short](https://youtube.com/shorts/b4TpO9pYpqk?si=7ZxKfiCIAQMT9fKT)
+1. Use Pagination: limit the number of items returned in a single response.
+2. asynchroneous logging: log the request and response in a separate thread.
+3. Caching: cache the response of the API. use redis or memcached.
+4. Payload Compression: compress the response payload.
