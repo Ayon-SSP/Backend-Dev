@@ -422,6 +422,7 @@ API Endpoint: [jsonplaceholder](https://jsonplaceholder.typicode.com/)
 ```js
 import React, { Component } from 'react'
 import axios from 'axios'
+
 class PostList extends Component {
 	constructor(props) {
 		super(props)
@@ -533,3 +534,53 @@ export default PostForm
 
 ### React Hooks
 > [React Hooks](https://blog.logrocket.com/react-hooks-cheat-sheet-solutions-common-problems/)
+
+TODO: React Hooks Tutorial 1 - complte
+
+1. insted of setCount(count + 1) -> setCount(prevCount => prevCount + 1)
+
+```js
+import React, {useState} from 'react'
+const [count, setCount] = useState(0);
+useState(count + 1);
+useState(prevCount => prevCount + 1)
+
+
+
+const [name, setName] = useState({ firstName: '', seconeName: '' })
+// onChange={e => setName({ e.target.keys: e.target.value })} dont know weather it works.
+onChange={e => setName({ ...name, firstName: e.target.value })}
+
+
+const [items, setItems] = useState([])
+
+const addItem = () =>{
+  // setItems(prevItem => )
+  setItems([...items, {
+    id: items.length,
+    value: Math.floor(Math.random() * 10 + 1)
+  }])
+}
+
+onClick={addItem}
+
+```
+
+#### useEffect Hook
+1. useEffect is a hook that allows you to perform side effects in functional components.
+Flow:
+1. render the component(Mount): only the body()
+2. if any thing from the dependency array changes then useEffect will first run the cleanup code and then run the useEffect code.
+      first distroy it self Unmount -> then Mount.
+```js
+import React, {useState, useEffect} from 'react'
+const [count, setCount] = useState(0);
+useEffect(() => {
+  // the code that we want to run
+  document.title = `You clicked ${count} times`
+  console.log('useEffect - Updating document title', count)
+  return () => {
+    // cleanup code
+  }
+}, [count]) // dependency array
+```

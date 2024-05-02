@@ -109,11 +109,11 @@
 // myFunction();
 
 
-const nums = [1, 2, 3, 4, 5, 5, 30, 76];
-// const evens = nums.filter(n => n % 2 === 0);
+// const nums = [1, 2, 3, 4, 5, 5, 30, 76];
+// // const evens = nums.filter(n => n % 2 === 0);
 
-const maxVal = nums.reduce((max, value) => {
-  return Math.max(max, value);
-})
+// const maxVal = nums.reduce((max, value) => {
+//   return Math.max(max, value);
+// })
 
-console.log(maxVal);
+console.log('0' == false);

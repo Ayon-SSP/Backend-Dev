@@ -146,6 +146,26 @@ sum -> 11 Doe790
 
 typeof(5) -> number // Returns the type of a variable
 ```
+```js
+0 == false   // true
+0 === false  // false, because they are of a different type
+1 == "1"     // true, automatic type conversion for value only
+1 === "1"    // false, because they are of a different type
+null == undefined // true
+null === undefined // false
+'0' == false // true
+'0' === false // false
+
+console.log(0 || 1); console.log("" || "a"); console.log(NaN || 1);
+// 1				 "a"					 1
+console.log(0 ?? 1); console.log("" ?? "a"); console.log(Nan ?? 1);
+// 0				 ""						 Nan
+console.log(undefined || 1);
+// 1
+console.log(undefined ?? 1);
+// 1
+```
+
 #### JavaScript Identifiers / Names:
 1. A letter (A-Z or a-z)
 1. A dollar sign ($)
@@ -515,6 +535,11 @@ fetch(url)
     console.log(data);
   })
   .catch((err) => console.log(err));
+
+this.setState(prevState => ({
+            message: 'Thank you for subscribing' + msd + '!',
+            count: prevState.count + 1
+        }), () => { console.log('callback value', this.state.count) });
 
 // async/await
 async function myFunction() {
