@@ -1,10 +1,35 @@
 # 📘 React
 > [YT Playlist](https://youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&si=5yO85s7ERDZBhLOv)
 
+
+
+## React Docs:
+**INSTALLATION**
+1. Getting Started
+1. Add React to a Website
+1. Create a New React App
+1. CDN Links
+1. Release Channels
+
+**MAIN CONCEPTS**
+1. Hello World
+2. Introducing JSX
+3. Rendering Elements
+4. Components and Props
+5. State and Lifecycle
+6. Handling Events
+7. Conditional Rendering
+8. Lists and Keys
+9. Forms
+10. Lifting State Up
+11. Composition vs Inheritance
+12. Thinking In React
+
+
 1. React is a JavaScript library for Focus on UI. created and maintained by Facebook.
 2. **routing and http request are not included in react.**
-3. Components based architecture.
-4. react is declarative: you tell react what you want and react will build the UI.
+3. Components based architecture. Only work in View layer. not like a MVC(Angular, JSP Servlets) or MVT(Django) framework.
+4. React is declarative: You tell react what you want and react will build the UI. [stackoverflow](https://stackoverflow.com/questions/33655534/difference-between-declarative-and-imperative-in-react-js)
    1. react will handle efficiently updating and rendering the components.
    2. DOM updates are handled gracefully in react.
 5. seamlessly integrate react into any project. 
@@ -13,7 +38,6 @@
    3. entire application with react.
 6. `JavaScript XML (JSX)` is used to write react components. `ES6` is used to write react components.
 7. `single page applications (SPA)` are built using react.
-8. only work in View layer. not like a MVC(Angular, JSP Servlets) or MVT(Django) framework.
 9. React uses **Virtual DOM** exists which is like a lightweight copy of the actual DOM(a virtual representation of the DOM).
 
 ### Pre-requisites
@@ -75,6 +99,144 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
+## JSX
+```jsx
+function MyButton({ title }: { title: string }) {
+  return (
+    <button>{title}</button>
+  );
+}
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton title="I'm a button" />
+    </div>
+  );
+}
+
+
+
+interface MyButtonProps {
+  /** The text to display inside the button */
+  title: string;
+  /** Whether the button can be interacted with */
+  disabled: boolean;
+}
+
+function MyButton({ title, disabled }: MyButtonProps) {
+  return (
+    <button disabled={disabled}>{title}</button>
+  );
+}
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton title="I'm a disabled button" disabled={true}/>
+    </div>
+  );
+}
+```
+
+
+### objects
+Object can store:
+1. Functions
+1. Other Objects
+1. Symbols
+1. Arrays
+1. Regular Expressions
+1. Dates
+1. Promises
+1. Maps and Sets
+
+```jsx
+const element = <h1>Hello, world!</h1>;
+
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+
+const obj = {
+  greet: function() {
+    console.log("Hello!");
+  }
+};
+
+obj.greet(); // Outputs: Hello!
+
+
+const obj = {
+  nestedObj: {
+    key: "value"
+  }
+};
+
+console.log(obj.nestedObj.key); // Outputs: value
+
+
+const sym = Symbol("unique");
+const obj = {
+  [sym]: "Symbol value"
+};
+
+console.log(obj[sym]); // Outputs: Symbol value
+
+const obj = {
+  arrayProp: [1, 2, 3]
+};
+
+console.log(obj.arrayProp[0]); // Outputs: 1
+
+
+const obj = {
+  regex: /\d+/g
+};
+
+console.log("123abc456".match(obj.regex)); // Outputs: ["123", "456"]
+
+
+const obj = {
+  currentDate: new Date()
+};
+
+console.log(obj.currentDate); // Outputs: Current date and time
+
+
+const obj = {
+  asyncOperation: new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Promise resolved");
+    }, 1000);
+  })
+};
+
+obj.asyncOperation.then(result => console.log(result)); // Outputs: Promise resolved
+
+
+const obj = {
+  map: new Map([[1, 'one'], [2, 'two']]),
+  set: new Set([1, 2, 3])
+};
+
+console.log(obj.map.get(1)); // Outputs: one
+console.log(obj.set.has(3)); // Outputs: true
+```
+
 
 ### Components
 1. Components are the building blocks of a react application.
@@ -178,7 +340,79 @@ const Home = props => {
 
 export default Home;
 ```
+```jsx
+import React from 'react';
+import MyComponent from './MyComponent';
 
+const App = () => {
+  const handleEvent = () => {
+    console.log('Button clicked!');
+  };
+
+  const callbackFunction = () => {
+    console.log('Callback function called!');
+  };
+
+  const myStyle = {
+    color: 'blue',
+    fontSize: '18px',
+  };
+
+  const config = {
+    isEnabled: true,
+  };
+
+  return (
+    <div>
+      <h1>App Component</h1>
+      <MyComponent 
+        dataProp="Hello, World!" 
+        functionProp={handleEvent} 
+        eventHandlerProp={handleEvent}
+        booleanProp={true}
+        callbackProp={callbackFunction}
+        styleProp={myStyle}
+        configProp={config}
+      >
+        <p>This is a child component.</p>
+      </MyComponent>
+    </div>
+  );
+};
+
+export default App;
+
+import React from 'react';
+
+const MyComponent = ({ 
+  dataProp,
+  functionProp,
+  children,
+  eventHandlerProp,
+  booleanProp,
+  callbackProp,
+  refProp,
+  styleProp,
+  configProp
+}) => {
+
+  const handleClick = () => {
+    eventHandlerProp();
+  };
+
+  return (
+    <div style={styleProp}>
+      <p>Data Prop: {dataProp}</p>
+      <button onClick={handleClick}>Click Me</button>
+      <p>Boolean Prop: {booleanProp ? 'True' : 'False'}</p>
+      <p>Config Prop: {configProp.isEnabled ? 'Enabled' : 'Disabled'}</p>
+      <div>{children}</div>
+    </div>
+  );
+};
+
+export default MyComponent;
+```
 ### State
 1. State is used to store data that can be changed.
 2. State is **mutable**.
@@ -584,3 +818,13 @@ useEffect(() => {
   }
 }, [count]) // dependency array
 ```
+
+
+
+
+
+
+
+
+
+
