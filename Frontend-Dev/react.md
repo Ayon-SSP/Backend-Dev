@@ -2,7 +2,6 @@
 > [YT Playlist](https://youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&si=5yO85s7ERDZBhLOv)
 
 
-
 ## React Docs:
 **INSTALLATION**
 1. Getting Started
@@ -19,7 +18,7 @@
 5. State and Lifecycle
 6. Handling Events
 7. Conditional Rendering
-8. Lists and Keys
+8. Lists and Keys ✅
 9. Forms
 10. Lifting State Up
 11. Composition vs Inheritance
@@ -30,12 +29,12 @@
 2. **routing and http request are not included in react.**
 3. Components based architecture. Only work in View layer. not like a MVC(Angular, JSP Servlets) or MVT(Django) framework.
 4. React is declarative: You tell react what you want and react will build the UI. [stackoverflow](https://stackoverflow.com/questions/33655534/difference-between-declarative-and-imperative-in-react-js)
-   1. react will handle efficiently updating and rendering the components.
-   2. DOM updates are handled gracefully in react.
+  1. react will handle efficiently updating and rendering the components.
+  2. DOM updates are handled gracefully in react.
 5. seamlessly integrate react into any project. 
-   1. just a portion of the page.
-   2. `complete page`.
-   3. entire application with react.
+  1. just a portion of the page.
+  2. `complete page`.
+  3. entire application with react.
 6. `JavaScript XML (JSX)` is used to write react components. `ES6` is used to write react components.
 7. `single page applications (SPA)` are built using react.
 9. React uses **Virtual DOM** exists which is like a lightweight copy of the actual DOM(a virtual representation of the DOM).
@@ -67,7 +66,7 @@
 
   ```
 3. let & const, arrow functions, template literals [`${num}`], default parameters, object literals, rest and spread operators[...], destructuring, classes, promises, async/await, fetch API, modules, import/export, and more.
-   1. Rest and spread operators: `...`
+  1. Rest and spread operators: `...`
     ```js
     let array1 = ["one", "two", "three", "four"]
     let array2 = ["five", "six", "seven"]
@@ -139,6 +138,11 @@ export default function MyApp() {
     </div>
   );
 }
+
+
+
+
+
 ```
 
 
@@ -301,8 +305,8 @@ export default MyComponent;
 1. class -> className
 2. for -> htmlFor
 3. camelCase property naming convention.
-   1. onclick -> onClick
-   2. tabindex -> tabIndex
+  1. onclick -> onClick
+  2. tabindex -> tabIndex
 
 
 ### Props
@@ -556,7 +560,7 @@ clickHandel() {}
 TODO: ReactJS Tutorial - 14-16
 
 
-### List Rendering
+### List Rendering: 8. Lists and Keys
 ```js
 import React from "react"
 
@@ -602,10 +606,158 @@ const Home = props => {
 }
 
 export default Home;
-
 ```
-TODO: ReactJS Tutorial - 18-19 - Lists and Keys, key anti parten.
- 
+
+#### Keys
+- Keys Must Only Be Unique Among Siblings
+- Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity: 
+```jsx
+function Blog(props) {
+
+  const sidebar = (
+    <ul>
+      {props.posts.map((post) =>
+        <li key={post.id}>
+          {post.title}
+        </li>
+      )}
+    </ul>
+  );
+
+  const content = props.posts.map((post) =>
+    <div key={post.id}>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+    </div>
+  );
+
+  return (
+    <div>
+      {sidebar}
+      <hr />
+      {content}
+    </div>
+  );
+}
+
+const posts = [
+  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+];
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
+```
+#### Extracting Components with Keys
+```jsx
+function ListItem(props) {
+  const value = props.value;
+  return (
+    // 🟥 Wrong! There is no need to specify the key here:
+    <li key={value.toString()}>
+      {value}
+    </li>
+  );
+}
+
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    // 🟥 Wrong! The key should have been specified here:
+    <ListItem value={number} />
+  );
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  );
+}
+
+// Correct way
+function ListItem(props) {
+  // Correct! There is no need to specify the key here:
+  return <li>{props.value}</li>;
+}
+
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    // Correct! Key should be specified inside the array.
+    <ListItem key={number.toString()} value={number} />
+  );
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  );
+}
+```
+- Keys Must Only Be Unique Among Siblings
+```jsx
+function Blog(props) {
+  const sidebar = (
+    <ul>
+      {props.posts.map((post) =>
+        <li key={post.id}>
+          {post.title}
+        </li>
+      )}
+    </ul>
+  );
+  const content = props.posts.map((post) =>
+    <div key={post.id}>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+    </div>
+  );
+  return (
+    <div>
+      {sidebar}
+      <hr />
+      {content}
+    </div>
+  );
+}
+
+const posts = [
+  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+];
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
+```
+
+- Embedding map() in JSX
+```jsx
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    <ListItem key={number.toString()}
+              value={number} />
+  );
+  return (
+    <>
+      <ul>
+        {listItems}
+      </ul>
+    {
+      numbers.map((number) =>
+        <ListItem key={number.toString()}
+                  value={number} />
+      )
+    }
+    </>
+  );
+}
+```
+
+
+
+
+
+
+
 ### Styling and CSS Basics
 TODO: ReactJS Tutorial - 20 - Styling and CSS Basics
 
@@ -618,18 +770,18 @@ TODO: ReactJS Tutorial - 22 - 30 Component Lifecycle Methods.
 
 w3: [React Component Lifecycle](https://www.w3schools.com/react/react_lifecycle.asp)
 1. Mounting
-   1. constructor()
-   2. static getDerivedStateFromProps()
-   3. render()
-   4. componentDidMount()
+  1. constructor()
+  2. static getDerivedStateFromProps()
+  3. render()
+  4. componentDidMount()
 2. Updating
-   1. static getDerivedStateFromProps()
-   2. shouldComponentUpdate()
-   3. render()
-   4. getSnapshotBeforeUpdate()
-   5. componentDidUpdate()
+  1. static getDerivedStateFromProps()
+  2. shouldComponentUpdate()
+  3. render()
+  4. getSnapshotBeforeUpdate()
+  5. componentDidUpdate()
 3. Unmounting
-   1. componentWillUnmount()
+  1. componentWillUnmount()
 4. Error Handling
 
 
@@ -658,40 +810,40 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class PostList extends Component {
-	constructor(props) {
-		super(props)
+  constructor(props) {
+    super(props)
 
-		this.state = {
+    this.state = {
       posts: [],
       errorMsg: ''
-		}
-	}
+    }
+  }
 
-	componentDidMount() {
-		axios
-			.get('https://jsonplaceholder.typicode.com/posts')
-			.then(response => {
-				console.log(response)
-				this.setState({ posts: response.data })
-			})
-			.catch(error => {
+  componentDidMount() {
+    axios
+      .get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        console.log(response)
+        this.setState({ posts: response.data })
+      })
+      .catch(error => {
         console.log(error)
         this.setState({errorMsg: 'Error retrieving data'})
-			})
-	}
+      })
+  }
 
-	render() {
-		const { posts, errorMsg } = this.state
-		return (
-			<div>
-				List of posts
-				{posts.length
-					? posts.map(post => <div key={post.id}>{post.title}</div>)
+  render() {
+    const { posts, errorMsg } = this.state
+    return (
+      <div>
+        List of posts
+        {posts.length
+          ? posts.map(post => <div key={post.id}>{post.title}</div>)
           : null}
         {errorMsg ? <div>{errorMsg}</div> : null}
-			</div>
-		)
-	}
+      </div>
+    )
+  }
 }
 
 export default PostList
@@ -700,67 +852,67 @@ export default PostList
 import React, { Component } from 'react'
 import axios from 'axios'
 class PostForm extends Component {
-	constructor(props) {
-		super(props)
+  constructor(props) {
+    super(props)
 
-		this.state = {
-			userId: '',
-			title: '',
-			body: ''
-		}
-	}
+    this.state = {
+      userId: '',
+      title: '',
+      body: ''
+    }
+  }
 
-	changeHandler = e => {
-		this.setState({ [e.target.name]: e.target.value })
-	}
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
-	submitHandler = e => {
-		e.preventDefault() // to avoid page refresh
-		console.log(this.state)
-		axios
-			.post('https://jsonplaceholder.typicode.com/posts', this.state)
-			.then(response => {
-				console.log(response)
-			})
-			.catch(error => {
-				console.log(error)
-			})
-	}
+  submitHandler = e => {
+    e.preventDefault() // to avoid page refresh
+    console.log(this.state)
+    axios
+      .post('https://jsonplaceholder.typicode.com/posts', this.state)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
-	render() {
-		const { userId, title, body } = this.state
-		return (
-			<div>
-				<form onSubmit={this.submitHandler}>
-					<div>
-						<input
-							type="text"
-							name="userId"
-							value={userId}
-							onChange={this.changeHandler}
-						/>
-					</div>
-					<div>
-						<input
-							type="text"
-							name="title"
-							value={title}
-							onChange={this.changeHandler}
-						/>
-					</div>
-					<div>
-						<input
-							type="text"
-							name="body"
-							value={body}
-							onChange={this.changeHandler}
-						/>
-					</div>
-					<button type="submit">Submit</button>
-				</form>
-			</div>
-		)
-	}
+  render() {
+    const { userId, title, body } = this.state
+    return (
+      <div>
+        <form onSubmit={this.submitHandler}>
+          <div>
+            <input
+              type="text"
+              name="userId"
+              value={userId}
+              onChange={this.changeHandler}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={this.changeHandler}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="body"
+              value={body}
+              onChange={this.changeHandler}
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    )
+  }
 }
 
 export default PostForm
@@ -818,13 +970,3 @@ useEffect(() => {
   }
 }, [count]) // dependency array
 ```
-
-
-
-
-
-
-
-
-
-
