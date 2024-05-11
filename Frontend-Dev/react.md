@@ -1,14 +1,11 @@
 # 📘 React
 > [YT Playlist](https://youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&si=5yO85s7ERDZBhLOv)
 
-<<<<<<< HEAD
 Node Fundamentals: 
 ```bash
 npm init -y <or> --yes
 ```
 
-=======
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
 
 ## React Docs:
 **INSTALLATION**
@@ -19,21 +16,12 @@ npm init -y <or> --yes
 1. Release Channels
 
 **MAIN CONCEPTS**
-<<<<<<< HEAD
 1. Hello World ✅
 2. Introducing JSX ✅
 3. Rendering Elements ✅ [Link](https://legacy.reactjs.org/docs/rendering-elements.html)
 4. Components and Props ✅
 5. State and Lifecycle
 6. Handling Events ✅
-=======
-1. Hello World
-2. Introducing JSX
-3. Rendering Elements
-4. Components and Props
-5. State and Lifecycle
-6. Handling Events
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
 7. Conditional Rendering
 8. Lists and Keys ✅
 9. Forms
@@ -115,149 +103,6 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
-## JSX
-```jsx
-function MyButton({ title }: { title: string }) {
-  return (
-    <button>{title}</button>
-  );
-}
-
-export default function MyApp() {
-  return (
-    <div>
-      <h1>Welcome to my app</h1>
-      <MyButton title="I'm a button" />
-    </div>
-  );
-}
-
-
-
-interface MyButtonProps {
-  /** The text to display inside the button */
-  title: string;
-  /** Whether the button can be interacted with */
-  disabled: boolean;
-}
-
-function MyButton({ title, disabled }: MyButtonProps) {
-  return (
-    <button disabled={disabled}>{title}</button>
-  );
-}
-
-export default function MyApp() {
-  return (
-    <div>
-      <h1>Welcome to my app</h1>
-      <MyButton title="I'm a disabled button" disabled={true}/>
-    </div>
-  );
-}
-
-
-
-
-
-```
-
-
-### objects
-Object can store:
-1. Functions
-1. Other Objects
-1. Symbols
-1. Arrays
-1. Regular Expressions
-1. Dates
-1. Promises
-1. Maps and Sets
-
-```jsx
-const element = <h1>Hello, world!</h1>;
-
-function formatName(user) {
-  return user.firstName + ' ' + user.lastName;
-}
-
-const user = {
-  firstName: 'Harper',
-  lastName: 'Perez'
-};
-
-const element = (
-  <h1>
-    Hello, {formatName(user)}!
-  </h1>
-);
-
-const obj = {
-  greet: function() {
-    console.log("Hello!");
-  }
-};
-
-obj.greet(); // Outputs: Hello!
-
-
-const obj = {
-  nestedObj: {
-    key: "value"
-  }
-};
-
-console.log(obj.nestedObj.key); // Outputs: value
-
-
-const sym = Symbol("unique");
-const obj = {
-  [sym]: "Symbol value"
-};
-
-console.log(obj[sym]); // Outputs: Symbol value
-
-const obj = {
-  arrayProp: [1, 2, 3]
-};
-
-console.log(obj.arrayProp[0]); // Outputs: 1
-
-
-const obj = {
-  regex: /\d+/g
-};
-
-console.log("123abc456".match(obj.regex)); // Outputs: ["123", "456"]
-
-
-const obj = {
-  currentDate: new Date()
-};
-
-console.log(obj.currentDate); // Outputs: Current date and time
-
-
-const obj = {
-  asyncOperation: new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("Promise resolved");
-    }, 1000);
-  })
-};
-
-obj.asyncOperation.then(result => console.log(result)); // Outputs: Promise resolved
-
-
-const obj = {
-  map: new Map([[1, 'one'], [2, 'two']]),
-  set: new Set([1, 2, 3])
-};
-
-console.log(obj.map.get(1)); // Outputs: one
-console.log(obj.set.has(3)); // Outputs: true
-```
-
 
 ### JSX
 ```jsx
@@ -489,26 +334,6 @@ class MyComponent extends Component {
 
 export default MyComponent;
 ```
-<<<<<<< HEAD
-=======
-### JSX
-```jsx
-import React from 'react';
-
-const MyComponent = () => {
-  return React.createElement('div', null, React.createElement('h1', null, 'Hello, World!'));
-  // indirectly REact libary is used to convert the html tages -> React.createElement() reason we import React from 'react';
-};
-
-export default MyComponent;
-```
-#### Names Replace
-1. class -> className
-2. for -> htmlFor
-3. camelCase property naming convention.
-  1. onclick -> onClick
-  2. tabindex -> tabIndex
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
 
 
 ### Props
@@ -619,7 +444,6 @@ const MyComponent = ({
 
 export default MyComponent;
 ```
-<<<<<<< HEAD
 SOME GOOD PRACTICES:
 ```jsx
 // App.jsx
@@ -673,8 +497,6 @@ export function getImageUrl(person, size = 's') {
   );
 }
 ```
-=======
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
 ### State
 1. State is used to store data that can be changed.
 2. State is **mutable**.
@@ -989,7 +811,6 @@ function GuestGreeting(props) {
 }
 
 
-<<<<<<< HEAD
 function Greeting(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
@@ -1048,8 +869,6 @@ export default function PackingList() {
 
 
 
-=======
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
 ### List Rendering: 8. Lists and Keys
 ```js
 import React from "react"
@@ -1097,7 +916,6 @@ const Home = props => {
 
 export default Home;
 ```
-<<<<<<< HEAD
 
 #### Keys
 - Keys Must Only Be Unique Among Siblings
@@ -1105,204 +923,6 @@ export default Home;
 - the key attrubute is a special attribute you need to include when creating lists of elements. and we can't access the key attribute in the child component.
 - keys are used to give a unique identity to the elements in the list. and when a new list item is added or removed, react uses the key to identify the element and update the DOM efficiently without re-rendering the entire list.
 - issues with keys: [Link](https://codepen.io/gopinav/pen/gQpepq)
-=======
-
-#### Keys
-- Keys Must Only Be Unique Among Siblings
-- Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity: 
-```jsx
-function Blog(props) {
-
-  const sidebar = (
-    <ul>
-      {props.posts.map((post) =>
-        <li key={post.id}>
-          {post.title}
-        </li>
-      )}
-    </ul>
-  );
-
-  const content = props.posts.map((post) =>
-    <div key={post.id}>
-      <h3>{post.title}</h3>
-      <p>{post.content}</p>
-    </div>
-  );
-
-  return (
-    <div>
-      {sidebar}
-      <hr />
-      {content}
-    </div>
-  );
-}
-
-const posts = [
-  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
-  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
-];
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Blog posts={posts} />);
-```
-#### Extracting Components with Keys
-```jsx
-function ListItem(props) {
-  const value = props.value;
-  return (
-    // 🟥 Wrong! There is no need to specify the key here:
-    <li key={value.toString()}>
-      {value}
-    </li>
-  );
-}
-
-function NumberList(props) {
-  const numbers = props.numbers;
-  const listItems = numbers.map((number) =>
-    // 🟥 Wrong! The key should have been specified here:
-    <ListItem value={number} />
-  );
-  return (
-    <ul>
-      {listItems}
-    </ul>
-  );
-}
-
-// Correct way
-function ListItem(props) {
-  // Correct! There is no need to specify the key here:
-  return <li>{props.value}</li>;
-}
-
-function NumberList(props) {
-  const numbers = props.numbers;
-  const listItems = numbers.map((number) =>
-    // Correct! Key should be specified inside the array.
-    <ListItem key={number.toString()} value={number} />
-  );
-  return (
-    <ul>
-      {listItems}
-    </ul>
-  );
-}
-```
-- Keys Must Only Be Unique Among Siblings
-```jsx
-function Blog(props) {
-  const sidebar = (
-    <ul>
-      {props.posts.map((post) =>
-        <li key={post.id}>
-          {post.title}
-        </li>
-      )}
-    </ul>
-  );
-  const content = props.posts.map((post) =>
-    <div key={post.id}>
-      <h3>{post.title}</h3>
-      <p>{post.content}</p>
-    </div>
-  );
-  return (
-    <div>
-      {sidebar}
-      <hr />
-      {content}
-    </div>
-  );
-}
-
-const posts = [
-  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
-  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
-];
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Blog posts={posts} />);
-```
-
-- Embedding map() in JSX
-```jsx
-function NumberList(props) {
-  const numbers = props.numbers;
-  const listItems = numbers.map((number) =>
-    <ListItem key={number.toString()}
-              value={number} />
-  );
-  return (
-    <>
-      <ul>
-        {listItems}
-      </ul>
-    {
-      numbers.map((number) =>
-        <ListItem key={number.toString()}
-                  value={number} />
-      )
-    }
-    </>
-  );
-}
-```
-
-
-
-
-
-
-
-### Styling and CSS Basics
-TODO: ReactJS Tutorial - 20 - Styling and CSS Basics
-
-### Basics of Form Handling
-TODO: ReactJS Tutorial - 21 - Basics of Form Handling
-
-### Component Lifecycle Methods
-TODO: ReactJS Tutorial - 22 - 30 Component Lifecycle Methods.
-**class components have lifecycle methods.**
-
-w3: [React Component Lifecycle](https://www.w3schools.com/react/react_lifecycle.asp)
-1. Mounting
-  1. constructor()
-  2. static getDerivedStateFromProps()
-  3. render()
-  4. componentDidMount()
-2. Updating
-  1. static getDerivedStateFromProps()
-  2. shouldComponentUpdate()
-  3. render()
-  4. getSnapshotBeforeUpdate()
-  5. componentDidUpdate()
-3. Unmounting
-  1. componentWillUnmount()
-4. Error Handling
-
-
-TODO: ReactJS Tutorial - 31 - 36
-
-### Context
-componentA -> passPorpec -> componentB -> passPorpec -> componentC ...
-so we use context API to pass the props to the component without passing the props to the parent component.
-TODO: ReactJS Tutorial - 37-40
-
-
-
-
-### React and HTTP
-Http Libraries:
-1. Axios
-2. Fetch API
-3. jQuery
-4. XMLHttpRequest...
-```bash
-npm install axios
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
 ```
 old , new list:
 1   -   1
@@ -1310,7 +930,6 @@ old , new list:
 3   -   3
     -   4 (addes this item in the list)
 
-<<<<<<< HEAD
 
 1   -   2 (all will update  due to change in order)
 2   -   3 (all will update  due to change in order)
@@ -1346,43 +965,6 @@ function Blog(props) {
       {content}
     </div>
   );
-=======
-class PostList extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      posts: [],
-      errorMsg: ''
-    }
-  }
-
-  componentDidMount() {
-    axios
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => {
-        console.log(response)
-        this.setState({ posts: response.data })
-      })
-      .catch(error => {
-        console.log(error)
-        this.setState({errorMsg: 'Error retrieving data'})
-      })
-  }
-
-  render() {
-    const { posts, errorMsg } = this.state
-    return (
-      <div>
-        List of posts
-        {posts.length
-          ? posts.map(post => <div key={post.id}>{post.title}</div>)
-          : null}
-        {errorMsg ? <div>{errorMsg}</div> : null}
-      </div>
-    )
-  }
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
 }
 
 const posts = [
@@ -1628,21 +1210,20 @@ Have a look good practices:  [Link](https://github.com/Ayon-SSP/Portfolio_Ayon-s
 import React, { Component } from 'react'
 import axios from 'axios'
 class PostForm extends Component {
-  constructor(props) {
-    super(props)
+	constructor(props) {
+		super(props)
 
-    this.state = {
-      userId: '',
-      title: '',
-      body: ''
-    }
-  }
+		this.state = {
+			userId: '',
+			title: '',
+			body: ''
+		}
+	}
 
-  changeHandler = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+	changeHandler = e => {
+		this.setState({ [e.target.name]: e.target.value })
+	}
 
-<<<<<<< HEAD
 	// onChange={e => setName({ ...name, firstName: e.target.value })}
 
 	submitHandler = e => {
@@ -1657,55 +1238,41 @@ class PostForm extends Component {
 				console.log(error)
 			})
 	}
-=======
-  submitHandler = e => {
-    e.preventDefault() // to avoid page refresh
-    console.log(this.state)
-    axios
-      .post('https://jsonplaceholder.typicode.com/posts', this.state)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
 
-  render() {
-    const { userId, title, body } = this.state
-    return (
-      <div>
-        <form onSubmit={this.submitHandler}>
-          <div>
-            <input
-              type="text"
-              name="userId"
-              value={userId}
-              onChange={this.changeHandler}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={this.changeHandler}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              name="body"
-              value={body}
-              onChange={this.changeHandler}
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    )
-  }
+	render() {
+		const { userId, title, body } = this.state
+		return (
+			<div>
+				<form onSubmit={this.submitHandler}>
+					<div>
+						<input
+							type="text"
+							name="userId"
+							value={userId}
+							onChange={this.changeHandler}
+						/>
+					</div>
+					<div>
+						<input
+							type="text"
+							name="title"
+							value={title}
+							onChange={this.changeHandler}
+						/>
+					</div>
+					<div>
+						<input
+							type="text"
+							name="body"
+							value={body}
+							onChange={this.changeHandler}
+						/>
+					</div>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+		)
+	}
 }
 
 export default PostForm
@@ -2025,7 +1592,6 @@ useEffect(() => {
   }
 }, [count]) // dependency array
 ```
-<<<<<<< HEAD
 
 ```jsx
 function WarningBanner(props) {
@@ -2184,5 +1750,3 @@ JavaScript App -> Action -> Reducer -> Store -> JavaScript App
 
 
 Done 1- 4 videos Codevolution Redux playlist.
-=======
->>>>>>> 6bf0f57543fdbbb54ea391be2bb2fecd479e7436
