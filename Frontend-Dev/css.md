@@ -1,15 +1,6 @@
-
-
-
-
-
-
 ```html
 <body style="background-color:powderblue;">
 ```
-
-
-
 
 ### Text:
   1. Color: 
@@ -81,11 +72,11 @@ DEFF 4 & 7
 
 ### Position:
   1. position: 
-  2. Static: - no change
-  3. relative: space form my post to top left
-  4. absolute - no space for me start form top left, 
-  5. sticky: i will be in my place until you see me I will be all wase
-  6. fixed: my place is fixed  
+  2. Static: no change
+  3. relative: saves space and changes it's location.
+  4. absolute: no taking space but relocating.
+  5. sticky: I will be in my place until you see me I will be all wase. no relocation.
+  6. fixed: my place is fixed | fixed to screan while schroling.  
 
 
 ### Transparency:
@@ -117,3 +108,17 @@ Css3:
   3) scale()
   4) skewX()
   6) matrix() :
+
+
+
+
+
+
+### Cursor: [value]
+> [Link](https://www.w3schools.com/cssref/tryit.php?filename=trycss_cursor)
+
+
+
+
+#### justify-content
+#### align-items
