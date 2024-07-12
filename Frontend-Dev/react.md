@@ -189,6 +189,36 @@ const element = {
 };
 ```
 
+#### Import order
+```jsx
+
+// 1. React and other core libraries
+import React, { useState, useEffect } from 'react';
+
+// 2. Third-party libraries
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
+
+// 3. Components
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+
+// 4. Utility functions and constants
+import { fetchData } from './utils/api';
+import { APP_NAME } from './constants';
+
+// 5. Styles
+import './App.css';
+import './index.css';
+
+function App() {
+  // Component code
+}
+
+export default App;
+```
 
 #### objects
 Object can store:
@@ -1082,6 +1112,8 @@ function NumberList(props) {
 
 
 ### Styling and CSS Basics
+
+> 1. Can use [ui.shadcn](https://ui.shadcn.com/docs/components/calendar)
 1. CSS stylesheets
 2. Inline styles
 3. CSS modules
@@ -1201,6 +1233,32 @@ Have a look good practices:  [Link](https://github.com/Ayon-SSP/Portfolio_Ayon-s
 
 
 
+#### _mixins.scss
+- mixins are used to define styles that can be reused throughout the application.
+**Eg:**
+```scss
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
+
+- multiple css
+```jsx
+const MyComponent = ({ isActive, isLarge }) => {
+  const divClass = classNames(styles.red, {
+    [styles.bold]: isActive,
+    [styles.large]: isLarge,
+  });
+
+  return (
+    <div className={`${styles.red} ${styles.bold} ${styles.large} `${divClass}``}>
+      This is a conditionally styled text.
+    </div>
+  );
+};
+```
 
 
 
@@ -1640,6 +1698,8 @@ root.render(<Page />);
 
 
 ## Redux
+> redux docs: [Link](https://react-redux.js.org/tutorials/quick-start)
+> react redux by Codevolution: [Link](https://youtube.com/playlist?list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK&si=CH7b6DsD1Oau_uW9)
 ```bash
 npm install redux react-redux
 ```
@@ -1651,6 +1711,28 @@ Three Principles:
 1. Single source of truth
 2. State is read-only
 3. Changes are made with pure functions
+
+- A single store that holds the entire state of the application.
+
+Action:
+- an action is a plain JavaScript object that describes the change.
+- and contains the type of action and the payload.
+eg. 
+```js
+{
+  type: 'BUY_CAKE',
+  info: 'First redux action',
+  payload: res.data
+}
+
+Reducers:
+- Specify how the apps state changes in response to actions sent to the store.
+const reduxMethos => (previousState, action) return newState
+
+dispatch(action) -> reducer -> store -> state -> UI
+```
+
+
 
 ```js
 // store.js
@@ -1749,4 +1831,108 @@ JavaScript App -> Action -> Reducer -> Store -> JavaScript App
            dispatch()    
 
 
-Done 1- 4 videos Codevolution Redux playlist.
+Done 1 - 8 videos Codevolution Redux playlist.
+
+
+### Working of Redux
+> Complete code: [Link](https://github.com/gopinav/React-Redux-Tutorials/blob/master/redux-demo/index.js) with multiple reducers.
+```js
+const BUY_CAKE = 'BUY_CAKE'
+const BUY_ICECREAM = 'BUY_ICECREAM'
+
+
+function buyCake () {
+  return {
+    type: BUY_CAKE,
+    info: 'First redux action'
+  }
+}
+
+function buyIceCream () {
+  return {
+    type: BUY_ICECREAM
+  }
+}
+
+const initialState = {
+  numOfCakes: 10,
+  numOfIceCreams: 20
+}
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case BUY_CAKE:
+      return {
+        ...state,
+        numOfCakes: state.numOfCakes - 1
+      }
+    case BUY_ICECREAM:
+      return {
+        ...state,
+        numOfIceCreams: state.numOfIceCreams - 1
+      }
+    default:
+      return state
+  }
+}
+
+const store = createStore(reducer)
+console.log('Initial state', store.getState())
+const unsubscribe = store.subscribe(() => console.log('Updated state', store.getState()))
+store.dispatch(buyCake())
+store.dispatch(buyCake())
+store.dispatch(buyCake())
+store.dispatch(buyIceCream())
+unsubscribe()
+```
+
+- Holds application state
+- Allows access to state via `getState()`
+- Allows state to be updated via `dispatch(action)`
+- Registers listeners via `subscribe(listener)`
+- Handles unregistering of listeners via the function returned by `subscribe(listener)`
+
+#### Multiple Reducers
+```jsx
+const cakeReducer = (state = initialState, action)...
+const iceCreamReducer = (state = initialState, action)...
+const rootReducer = combineReducers({
+  cake: cakeReducer,
+  iceCream: iceCreamReducer
+})W
+const store = createStore(rootReducer)
+```
+
+#### Middleware
+dispatch -> action -> [middleware] -> reducer -> store -> state -> UI
+- reducer can't perform async operations, or any operations that has exception like fetching data from an api where if can be success or failure. so in that case we use middleware.
+```jsx
+const store = createStore(rootReducer, applyMiddleware(logger))
+```
+
+#### Redux thunk:
+- it is the standart way to perform async action (apply middle ware)
+
+
+
+## stateless & stateful application.
+
+
+## React Router
+#### Router
+> Using BrowserRouter > Routes > Route
+
+#### Link
+```jsx
+import { Link } from 'react-router-dom';
+
+<Link to="/login" >Login</Link>
+```
+
+ #### NavLink (Active Links)
+ ```jsx
+ import { NavLink } from 'react-router-dom';
+ <NavLink to="/login" style={{ textDecoration: 'none', color: 'inherit' }}
+ auth set class='Active'
+ ```
+
