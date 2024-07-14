@@ -31,8 +31,9 @@
 
 ## 🗝️ Data Structures and Algorithms
 1. [The-SDE-Prep](https://github.com/Ayon-SSP/The-SDE-Prep)
-2. DSA with Python: [dsa-python](https://github.com/Ayon-SSP/Learning_python/tree/master/3%5D_DS_Algo)
-3. Notes: [dsa-notes](https://github.com/Ayon-SSP/Learning_python/blob/master/3%5D_DS_Algo/Topices/index.md)
+2. [DSA-Notes](https://github.com/Ayon-SSP/DSA)
+3. DSA with Python: [dsa-python](https://github.com/Ayon-SSP/Learning_python/tree/master/3%5D_DS_Algo)
+4. Notes: [dsa-notes](https://github.com/Ayon-SSP/Learning_python/blob/master/3%5D_DS_Algo/Topices/index.md)
 
 
 ## Projects
