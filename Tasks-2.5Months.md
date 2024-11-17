@@ -1,4 +1,5 @@
-# 🗓️ 2.5 Months (after Internship, summer break ) 
+# 🗓️ 5.5 + 3 + 3 Months (after Internship, summer break ) 
+- [x] DEV: Gohil Tech(React, redux, Spring-boot...)
 - [ ] 🪻 OBMS: Project.
 - [ ] 🪻 DBMS 
 - [x] SQL revision
@@ -15,7 +16,7 @@
 - [x] TUF: Top LL Interview Questions & Playlist [Link](https://takeuforward.org/linked-list/top-linkedlist-interview-questions-structured-path-with-video-solutions) | [`📺 Playlist`](https://www.youtube.com/playlist?list=PLgUwDviBIf0rAuz8tVcM0AymmhTRsfaLU)
 - [x] Pepcoding DSA - Level 1 [28-74]
 - [x] [roadmap.sh/sql](https://roadmap.sh/sql) Friday, (19 April 2024)
-- [ ] Functions and Arrays - Level 1
+- [ ] Functions and Arrays - Level 1                                                 ⬅️ 👈 🚌 🚎 🪀
 - [x] Pepcoding DSA - Level 1 [75-102]
 
 
@@ -30,3 +31,16 @@ Backend Dev + 🪵 Programming
 
 Frontend Dev
 - [ ] ReactJS Playlist.
+
+
+# New Tasks
+1. SQL and PL/SQL [] test on sunday 1hr interview.
+2. SDLC
+3. Java
+4. DBMS
+
+
+
+## Interview Preparation
+1. HR round (amazon principles)
+2. RWSL

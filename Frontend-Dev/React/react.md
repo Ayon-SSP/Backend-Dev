@@ -6,6 +6,8 @@ Node Fundamentals:
 npm init -y <or> --yes
 ```
 
+CSR: client side rendering.
+
 
 ## React Docs:
 **INSTALLATION**
