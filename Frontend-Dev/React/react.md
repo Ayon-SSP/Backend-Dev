@@ -1699,12 +1699,14 @@ root.render(<Page />);
 
 
 
-## Redux
+## Redux [licensing system project]
 > redux docs: [Link](https://react-redux.js.org/tutorials/quick-start)
 > react redux by Codevolution: [Link](https://youtube.com/playlist?list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK&si=CH7b6DsD1Oau_uW9)
+- redux is for Javascript applications.
 ```bash
 npm install redux react-redux
 ```
+
 
 Redux: 
 store -> action -> reducer
@@ -1901,7 +1903,7 @@ const iceCreamReducer = (state = initialState, action)...
 const rootReducer = combineReducers({
   cake: cakeReducer,
   iceCream: iceCreamReducer
-})W
+})
 const store = createStore(rootReducer)
 ```
 
@@ -1914,7 +1916,7 @@ const store = createStore(rootReducer, applyMiddleware(logger))
 
 #### Redux thunk:
 - it is the standart way to perform async action (apply middle ware)
-
+definition: A Redux thunk is a middleware that allows you to write action creators in Redux that return a function (instead of an action object) to handle asynchronous logic or complex synchronous logic, such as fetching data or conditionally dispatching actions.
 
 
 ## stateless & stateful application.
