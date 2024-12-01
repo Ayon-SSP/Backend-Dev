@@ -59,3 +59,28 @@ Resources
 - Figma to responsive JSP
 
 
+## Skills
+**Backend:**
+  Java
+  OOPS Design Patterns
+  Jwt
+  API
+  Spring Boot
+  Spring Security
+  Spring Data JPA
+  Lombok
+  Exception Handling
+
+**Database**
+  MySQL
+  JPA
+  Database Design
+
+**Frontend:**
+  React.js
+  Redux
+  JavaScript
+  SCSS
+
+Junit testing
+Deploy script python
