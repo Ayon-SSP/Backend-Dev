@@ -46,7 +46,7 @@ text-transform : none,lowercase,uppercase
 Margins: auto, inherit, [%,length]   ,   : 100px 50px 65px 80px; 
 Padding: %,length ,    100px 50px 65px 80px; 
 
-### Advanced Selectors :
+### Advanced Selectors [Link](https://techbrij.com/css-selector-adjacent-child-sibling):
 1. Adjacent Sibling Selector     | h4+ul { if both are adj sib h4 will effected           <h4>Heading 4</h4> <ul> <li>Item 1</li> <li>Item 2</li> </ul> 
 2. Attribute Selector            | input[type="checkbox"]{                               <input type="checkbox">
 3. nth-of-type Selector          | div:nth-of-type(3){                                     <div>Div 1</div> <div>Div 2</div> <div>Div 3</div> <div>Div 4</div>   
@@ -107,7 +107,8 @@ Css3:
   2) rotate():
   3) scale()
   4) skewX()
-  6) matrix() :
+  5) matrix():
+
 
 
 
@@ -118,7 +119,76 @@ Css3:
 > [Link](https://www.w3schools.com/cssref/tryit.php?filename=trycss_cursor)
 
 
+## CSS Selectors [Link](https://techbrij.com/css-selector-adjacent-child-sibling)
+all element: 
+    * {}
+Tags: 
+    dialog {}, h1 {}
+ID's: 
+    #main-component {}, #profile-pic
+Class: 
+    .class1, .button
+Multi properties selector: 
+    h2#info.center.blue html: <h2 id="info" class="center blue"></h2>
+Multi selector: 
+    h1, h2, p {}
+**Advanced Selectors in CSS:**
+Direct child: 
+    div#container > p
+All child: 
+    div#container p
+select p which is after div:
+    div + p
+select all p's which is after div:
+    div ~ p
 
 
-#### justify-content
-#### align-items
+
+
+
+## CSS Flexbox 
+> Best quick notes: [css-tricks.com/flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+1. Flex container
+2. Flex item
+
+Main axis  ---> (left - right)
+Cross axis   |   (top - bottom)
+
+### display
+```css
+display: inline | block | inline-block
+
+.container {
+  display: flex | inline-flex; 
+}
+```
+1. inline: inline display, no height and width.
+2. block: can define the hight and width, block element will start on new line, elements takes whole space.
+3. inline-block: does not start's on a new line, height and widht can be define. | takes only width that is needed.
+
+#### flex-direction
+```css
+.container {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+```
+
+#### flex-wrap
+```css
+.container {
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+```
+#### gap, row-gap, column-gap
+```css
+.container {
+  display: flex;
+  ...
+  gap: 10px;
+  gap: 10px 20px; /* row-gap column gap */
+  row-gap: 10px;
+  column-gap: 20px;
+}
+```
+
+
