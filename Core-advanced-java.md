@@ -138,13 +138,20 @@ java com.training.learn.basics.Main AYON 'SSP - software specialist programmer' 
   import classes from the other package? -> import -> public 
   ```
 
-
 ```java
-// public: outside of application, so that JVM can access it. allways starts with Main class name.
-// (String[] args): additional parameter are passed during execution of program. 
-//                    => run time arguments are passed as string array. && it's a dinamic array.
-//                    => String[] class in java which handels alphanumeric values.
-// className => pascal case|| methodName && variable => camelCase
+/*
+public: outside of application, so that JVM can access it. allways starts with Main class name.
+    so public class an public method.
+(String[] args): additional parameter are passed during execution of program. 
+                   => run time arguments are passed as string array. && it's a dinamic array.
+                   => String[] class in java which handels alphanumeric values.
+className => pascal case  ||  methodName && variable => camelCase 
+![case types](https://khalilstemmler.com/blogs/camel-case-snake-case-pascal-case/)
+
+static: 
+1. When a Java program starts, the main method is the entry point for the JVM (Java Virtual Machine).
+2. If main were not static, the JVM would need to create an object of the class containing main to invoke it.
+*/
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
@@ -783,7 +790,81 @@ class Dog extends Animal{
 
 
 #### Final Keyword
-**Final can be:** variablea(stop value change), method(stop method overriding), class(stop inheritance)
+**Final can be:**: 
+    - A variable (to stop its value from being changed), 
+    - A method (to stop it from being overridden), or 
+    - A class (to stop it from being inherited)
+    Breaking the rules results in a `compile-time error`.
+
+1. **Final Variable**
+   A final variable's value cannot be changed once assigned.
+      - Reason:
+        Declaring a variable as final means it becomes a `constant`. This is useful for values that should remain unchanged throughout the program, ensuring consistency and protecting from accidental reassignment.
+      - Example:
+       ```java
+       final int speed = 90;  
+       speed = 100; // Compile-time error
+       ```
+    
+2. **Final Method**
+    A final method cannot be `overridden` by subclasses.
+      - Reason:
+        Declaring a method as final ensures that its implementation remains `the same` across all classes, even if inherited. This is useful when you want to prevent subclasses from altering the behavior of a method, often for security or consistency reasons.
+      - Example:
+       ```java
+        class Bike {  
+          final void run() { 
+            System.out.println("running..."); 
+          }  
+        }  
+        class Honda extends Bike {  
+          void run() { 
+            System.out.println("running safely"); 
+          } // Compile-time error
+        }
+       ```
+      - However, a final method can still be inherited and called by subclasses:
+       ```java
+        class Bike {  
+          final void run() { 
+            System.out.println("running..."); 
+          }  
+        }  
+        class Honda extends Bike {  
+          public static void main(String[] args) {  
+            new Honda().run(); // Allowed, calls Bike's run() method  
+          }  
+        }
+       ```
+3. Final Class
+    A final class cannot be extended.
+      - Reason:
+        Declaring a class as final prevents inheritance. This is useful when you want to create `immutable classes` (e.g., String in Java) or when you want to ensure that the design of the class remains intact without being altered by subclasses.
+      - Example:
+       ```java
+        final class Bike { }  
+        class Honda extends Bike { } // Compile-time error
+       ```
+    
+4. Final Parameter
+    A final parameter cannot be reassigned within a method.
+      - Reason:
+        Declaring a parameter as final ensures that its value cannot be modified during method execution. This prevents unintended side effects and makes the parameter behave like a constant.
+      - Example:
+       ```java
+        int cube(final int n) {  
+        n = n + 2; // Compile-time error: cannot modify 'n'  
+        return n * n * n;  
+        }
+       ```
+**Additional Notes:**
+- A final variable can be static, but once assigned, its value cannot be changed.
+- Use final to enforce immutability, protect methods from being overridden, or prevent inheritance where needed.
+- Key Takeaway: The final keyword ensures consistency, security, and protection from unintended modifications in your code.
+
+
+
+
 - can be static
 ```java
 class Bike{  
@@ -811,7 +892,6 @@ class Honda2 extends Bike{
    }  
 }  // error
 ```
-
 - final parameter?
 ```java
   int cube(final int n){  
@@ -832,7 +912,7 @@ There are two ways to achieve abstraction in java: showing only essential things
   ```java
   Abstract class:
     5. Class can't be private or final
-    6. abstract static/final methods not allowed(Final/static methods can't override them. so, can't use in child class)(static methods are not override(static methods are belongs to class not object))
+    6. abstract method  static/final methods not allowed(Final/static methods can't override them. so, can't use in child class)(static methods are not override(static methods are belongs to class not object))
   ```
 - Abstraction is a process of hiding the implementation details and showing only functionality to the user. || Another way, it shows only essential things to the user and hides the internal details, for example, sending SMS where you type the text and send the message. You don't know the internal processing about the message delivery. || Abstraction lets you focus on what the object does instead of how it does it.
 - If a class has one abstract method then the class must be abstract.
@@ -2281,3 +2361,10 @@ User us = (User) session.getAttribute("userobj");
 ```
 
 ### Password Hashing
+
+
+
+
+
+to learn:
+native methods
