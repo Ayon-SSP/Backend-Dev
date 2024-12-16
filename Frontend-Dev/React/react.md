@@ -758,6 +758,24 @@ export default Toggle;
 1. Binding in the render method. this keyword will not work.
 
 
+### React.StrictMode
+> [YT video](https://youtu.be/XUwzASyHr4Q?si=W50qL7wqt4yXC137)
+```jsx
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
+```
+1. Only works in development mode(Not production mode).
+2. This detects unintended side effects.
+3. It's a side effect of react.
+4. It executes twice.
+  - React: first mount, unmount and then mount again. to check if there is any side effect.
+  - UseEffect, momo, function body, call reducre call dispatcher. theas will be executed twice.
 
 
 
@@ -1396,7 +1414,7 @@ w3: [React Component Lifecycle](https://www.w3schools.com/react/react_lifecycle.
 
 
 
-### Fragments
+### Fragments (<></> or <React.Fragment>)
 1. some tags can have div tag as a parent tag. so we use fragments to avoid the extra div tag.
 ```jsx
 import React from 'react'
@@ -1433,6 +1451,7 @@ just extend the PureComponent instead of Component.
 ```
 
 ### Memo:
+> A higher-order component that prevents a component from re-rendering when its props don't change
 1. pure components for functional components.
 ```jsx
 export default React.memo(MemoComp)
@@ -1703,6 +1722,8 @@ root.render(<Page />);
 > redux docs: [Link](https://react-redux.js.org/tutorials/quick-start)
 > react redux by Codevolution: [Link](https://youtube.com/playlist?list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK&si=CH7b6DsD1Oau_uW9)
 - redux is for Javascript applications.
+- client side state management library. unlike server side state management like `TanStack Query`.
+- 
 ```bash
 npm install redux react-redux
 ```
@@ -1939,4 +1960,3 @@ import { Link } from 'react-router-dom';
  <NavLink to="/login" style={{ textDecoration: 'none', color: 'inherit' }}
  auth set class='Active'
  ```
-

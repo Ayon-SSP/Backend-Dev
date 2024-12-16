@@ -147,7 +147,9 @@ select all p's which is after div:
 
 
 ## CSS Flexbox 
-> Best quick notes: [css-tricks.com/flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+> Best quick notes: 
+>   [css-tricks.com/flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+>   [better view](https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/)
 1. Flex container
 2. Flex item
 
@@ -162,9 +164,10 @@ display: inline | block | inline-block
   display: flex | inline-flex; 
 }
 ```
-1. inline: inline display, no height and width.
-2. block: can define the hight and width, block element will start on new line, elements takes whole space.
-3. inline-block: does not start's on a new line, height and widht can be define. | takes only width that is needed.
+1. flex: takes all the available space
+2. inline: inline display, no height and width. Examples of inline elements: <span>, <a>, <strong>.
+3. block: can define the hight and width, block element will start on new line, elements takes whole space.
+4. inline-block: does not start's on a new line, height and widht can be define. | takes only width that is needed.
 
 #### flex-direction
 ```css
@@ -179,6 +182,36 @@ display: inline | block | inline-block
   flex-wrap: nowrap | wrap | wrap-reverse;
 }
 ```
+
+#### flex-flowz
+
+### Applicable to flex .Content
+#### justify-content
+> Align items and distribute any extra space in the parent container.
+> align the items along the main axis and if flex-direction is column align the items along the cross axis
+```css
+.container {
+  flex-direction: column;
+  justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;
+}
+```
+#### align-items
+> Align items along the cross axis if the flex-direction is row align the items along the main axis if the flex-direction is column
+```css
+.container {
+  align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end + ... safe | unsafe;
+}
+baseline: aligns the baseline of the flex items Text sits on the same line img: https://youtu.be/XIJZjhqs7m0?list=PLC3y8-rFHvwg6rjbiMadCILrjh7QkvzoQ&t=178
+```
+#### align-content
+> The align-content property specifies how flex lines are distributed along the cross axis in a flexbox container. | works only with multiple lines
+```css
+.container {
+  align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end | baseline | first baseline | last baseline + ... safe | unsafe;
+}
+```
+
+
 #### gap, row-gap, column-gap
 ```css
 .container {

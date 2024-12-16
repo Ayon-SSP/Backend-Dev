@@ -458,11 +458,41 @@ const y = x.getElementsByTagName("p");
 
 ### JavaScript Hoisting
 1. the built-in behavior of the language through which declarations of functions, variables, and classes are moved to the top of their scope – all before code execution
+2. Variables (var, let, const)
+3. `var` is hoisted but initialized as undefined until the code is executed
+    ```js
+    console.log(a); // undefined (hoisted, but not initialized) Output: undefined
+    var a = 10;
 
+    console.log(b); // ReferenceError (temporal dead zone) err. Output: Cannot access 'b' before initialization
+    let b = 20;
+    ```
+4. Function Declarations:
+   - Fully hoisted (both declaration and body).
+   - Can be called before their definition
+    ```js
+    greet(); // Works, logs "Hello"
+    function greet() {
+        console.log("Hello");
+    }
+    ```
+5. Classes:
+   - Hoisted but remain in a temporal dead zone (similar to let and const).
+    ```js
+    const obj = new MyClass(); // ReferenceError
+    class MyClass {}
+    ```
+6. Function Expressions and Arrow Functions:
+   - Treated like variables; only the variable declaration is hoisted, not the function itself.
+   ```js
+   console.log(add); // undefined
+   var add = function () {
+       console.log("Add");
+   };
 
-
-
-
+   console.log(subtract); // ReferenceError
+   let subtract = () => console.log("Subtract");
+   ```
 
 
 ### JS Async

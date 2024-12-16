@@ -104,7 +104,15 @@ SSG vs SSR vs ISR.
 
 ```bash
 npx create-next-app
-  
+
+<or> pnpm
+npm install -g pnpm
+pnpm create next-app my-next-app
+cd my-next-app
+pnpm install
+pnpm dev
+pnpm add <package-name>
+pnpm run test
 ```
 
 
