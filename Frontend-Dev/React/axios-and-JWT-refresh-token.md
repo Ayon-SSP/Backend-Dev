@@ -8,29 +8,30 @@ import axios from 'axios';
 import store from '../app/store';
 import { refresh_token, logout } from '../app/index';
 
+// Create an Axios instance with a base URL and default JSON headers
 const apiClient = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}/api/v1/`,
   headers: {
     'Content-Type': 'application/json',
   },
 });
-
 ```
 
 **Adding Request Interceptors**
 Request interceptors allow us to automatically attach the JWT token to every outgoing request, ensuring secure endpoints are always accessed with proper authorization:
 
 ```js
+// Add a request interceptor to attach the JWT token to every outgoing request
 apiClient.interceptors.request.use(
   (config) => {
-    const token = store.getState().auth.access_token;
+    const token = store.getState().auth.access_token; // Get the token from Redux store
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers['Authorization'] = `Bearer ${token}`; // Add the Authorization header
     }
     return config;
   },
   (error) => {
-    return Promise.reject(error);
+    return Promise.reject(error); // Handle request errors
   }
 );
 ```
@@ -38,28 +39,34 @@ apiClient.interceptors.request.use(
 **Adding Response Interceptors**
 Response interceptors handle token expiry scenarios by intercepting 401 responses. The interceptor attempts to refresh the token and retry the original request, providing seamless user experience:
 ```js
+// Add a response interceptor to handle 401 errors and refresh the token
 apiClient.interceptors.response.use(
   (response) => {
-    return response;
+    return response; // Return the response if it's successful
   },
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    // Check for 401 status and ensure we haven't retried this request already
+    if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
+        // Attempt to refresh the token
         await store.dispatch(refresh_token());
         const token = store.getState().auth.access_token;
+
+        // Update the Authorization header and retry the original request
         originalRequest.headers['Authorization'] = `Bearer ${token}`;
         return apiClient(originalRequest);
       } catch (err) {
+        // Logout the user if token refresh fails
         store.dispatch(logout());
         return Promise.reject(err);
       }
     }
 
-    return Promise.reject(error);
+    return Promise.reject(error); // Handle other errors
   }
 );
 
@@ -68,42 +75,49 @@ export default apiClient;
 **Practical Application: Creating a Product with JWT Handling**
 Leveraging the configured apiClient, we can create complex actions in Redux. Below is an advanced example of creating a product, complete with toast notifications for user feedback and comprehensive error handling:
 ```js
-import { CREATE_PRODUCT_REQUEST, CREATE_PRODUCT_SUCCESS, CREATE_PRODUCT_FAILURE } from '../constants/productConstants';
+// actions/dataActions.js
+
+import {
+  CREATE_DATA_REQUEST,
+  CREATE_DATA_SUCCESS,
+  CREATE_DATA_FAILURE,
+} from '../constants/dataConstants';
 import apiClient from '../utils/apiClient';
 import { toast } from 'react-toastify';
 
-export const createProduct = (productData) => {
+export const createData = (dataPayload) => {
   return async (dispatch) => {
-    dispatch({ type: CREATE_PRODUCT_REQUEST });
-    
+    dispatch({ type: CREATE_DATA_REQUEST });
+
     try {
-      const createPromise = apiClient.post('/products', productData);
+      // Make the API call to create data
+      const createPromise = apiClient.post('/data', dataPayload);
 
-      toast.promise(
-        createPromise,
-        {
-          loading: 'Creating product...',
-          success: <b>Product created!</b>,
-          error: ({ response }) => {
-            if (response?.status === 401) {
-              return <b>Unauthorized access.</b>;
-            } else {
-              return (
-                <p>Could not create product: <b>{response?.data?.error || 'Error creating product.'} [{response?.status}]</b></p>
-              );
-            }
-          },
-        }
-      );
+      // Show toast notifications for user feedback
+      toast.promise(createPromise, {
+        loading: 'Uploading data...',
+        success: <b>Data successfully uploaded!</b>,
+        error: ({ response }) => {
+          if (response?.status === 401) {
+            return <b>Unauthorized access.</b>;
+          }
+          return (
+            <p>
+              Could not upload data: <b>{response?.data?.error || 'Error uploading data.'} [{response?.status}]</b>
+            </p>
+          );
+        },
+      });
 
+      // Await the API response
       const response = await createPromise;
-      dispatch({ type: CREATE_PRODUCT_SUCCESS, payload: response.data });
-
+      dispatch({ type: CREATE_DATA_SUCCESS, payload: response.data });
     } catch (error) {
-      if (error.response && error.response.status === 400) {
-        dispatch({ type: CREATE_PRODUCT_FAILURE, payload: error.response.data.details });
+      // Handle errors and dispatch failure action
+      if (error.response?.status === 400) {
+        dispatch({ type: CREATE_DATA_FAILURE, payload: error.response.data.details });
       } else {
-        console.error('Error creating product:', error);
+        console.error('Error uploading data:', error);
       }
     }
   };
