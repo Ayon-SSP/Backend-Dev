@@ -1723,11 +1723,24 @@ root.render(<Page />);
 > react redux by Codevolution: [Link](https://youtube.com/playlist?list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK&si=CH7b6DsD1Oau_uW9)
 - redux is for Javascript applications.
 - client side state management library. unlike server side state management like `TanStack Query`.
+- Its architecture revolves around a **unidirectional data flow**
+- 
 - 
 ```bash
 npm install redux react-redux
 ```
-
+**The main components of Redux include:**
+1. Store: The store is an object that holds the application's state tree.
+2. Action: Actions are plain JavaScript objects that describe the change.
+3. Reducer: Reducers specify how the application's state changes in response to actions sent to the store.
+4. Dispatch: Dispatch is a function of the Redux store. You call store.dispatch to dispatch an action. This is the only way to trigger a state change.
+5. Selector: Selectors are functions that take the Redux store state as an argument and return specific pieces of the state.
+6. Middleware: Middleware is the suggested way to extend Redux with custom functionality. Middleware lets you wrap the store's dispatch method for fun and profit.
+7. Provider: The <Provider> component makes the Redux store available to any nested components that need to access the Redux store.
+8. Connect: The connect() function connects a React component to a Redux store.
+9. HOC: Higher-order components (HOCs) are functions that take a component and return a new component.
+10. Hooks: Hooks are functions that let you use state and other React features in functional components.
+11. Thunk: Redux Thunk is middleware that allows you to write action creators that return a function instead of an action.
 
 Redux: 
 store -> action -> reducer

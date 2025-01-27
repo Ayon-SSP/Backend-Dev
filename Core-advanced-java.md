@@ -1,32 +1,41 @@
 # ☕ Java
 
-> Learning Source:
-> 	ref:
->   	- Oracle Docs: https://docs.oracle.com/javase/tutorial
->   	- Kunal OOPs: https://youtube.com/playlist?list=PL9gnSGHSqcno1G3XjUbwzXHL8_EttOuKk&si=wdLQQfKG84VjKypD
->   	- javatpoint: https://www.javatpoint.com/java-oops-concepts
+> ### 🛢️Learning Source:
+> **Oracle Docs:** https://docs.oracle.com/javase/tutorial
+>
+> **Kunal OOPs:** https://youtube.com/playlist?list=PL9gnSGHSqcno1G3XjUbwzXHL8_EttOuKk&si=wdLQQfKG84VjKypD
+>
+> **javatpoint:** https://www.javatpoint.com/java-oops-concepts
+>
+> **prepinsta**: https://prepinsta.com/java/introduction/
+>
+> **Code:** C:\CODE\1]_Lets_Compile\3]_learning_java\tuts_java**
+>
+> **Other Notes**: ref:📒[OneNotes] [Fullstack -> Programming -> Java]
 
 ============================================================================
 Java ☕:
-1. Architecture
-2. 🐳 Baby Runn 
-3. Java guide:
-   1. Java Package
-   2. javadoc tags
-   3. Java Naming Convention
-4. Primitive Types
-5. Control Statements
-6. Object Oriented Programming in Java
+1. Architecture ✅
+2. 🐳 Baby Runn ✅
+3. Java guide: ✅
+   1. Java Package ✅
+   2. javadoc tags ✅
+   3. Java Naming Convention ✅ 
+4. Primitive Types ✅
+	- Memory Allocation and Behavior of Primitive Data Types in Java 🛰️ ✅
+5. Type conversion and Type casting ✅
+6. Control Statements ✅
+7. Object Oriented Programming in Java
    1. Object-Oriented design
    2. POJO vs JavaBean
-   3. Types of classes
-      - Singleton class
-   4. Class && Object
+   3. Class && Object
       - Methods:
       - Constructor
       - static keyword
       - this keyword
-      - Local variables
+    	- Object lifecycle and memory management 🛰️
+   4. Types of classes
+      - Singleton class
    5. Inheritance
       - inheritance(IS-A)
       - aggregation(HAS-A)
@@ -42,82 +51,65 @@ Java ☕:
    8. Encapsulation
       - Access Modifiers in Java
       - Encapsulation
-7. ⚓ Java Nested & Inner Classes
-8. Strings
-9. Collections in Java
+8. ⚓ Java Nested & Inner Classes
+9.  Strings
+10. Collections in Java
    1. ArrayList
    2. Map
    3. Set...
-10. Java Lambda Expressions & Functional Interfaces & Stream 🤖
-11. Enum in Java
-12. Exception Handling ⚠️
-13. 
-14. 
+11. Java Lambda Expressions & Functional Interfaces & Stream 🤖
+12. Enum in Java
+13. Exception Handling ⚠️
+14. Multithreading ref:📒[OneNotes] Fullstack -> Programming -> Java
 15. 
+16. 
 ============================================================================
-## Architecture: 
-- ![JDK(JRE(JVM, setofLibaries, other files, classLoder) dev tools [javac, java])](https://static.javatpoint.com/images/jdk2.png)
-  - Java: Development Environment
-  As a development environment, Java technology provides you 
-  with a large suite of tools:
-  – A compiler (javac): takes the text file work of a developer and compiles it into a platform-independent Java file
-  – An interpreter (java): used to run the compiled Java bytecode program
-  – A class file packaging tool and so on.
-  - (JDK)(software development environment which is used to develop Java applications) -> (JRE)(provide the runtime environment) -> (JVM)(environment in which Java bytecode can be executed)
-        - -> javadoc, RMI compiler, debuggers, applet viewer.
-  - Java Development Kit (JDK) is the core component of the Java environment. It includes an interpreter/loader (Java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc) and other tools needed in Java development.
-  - Java Runtime Environment (JRE) is the runtime environment for Java applications. It is physically existent. It contains the Java Virtual Machine (JVM), the core libraries and other additional components to run applications and applets written in Java.
-  - Java Virtual Machine (JVM)(OS Specific) is the `heart` of the Java environment. It is an abstract computing machine that enables a computer to run a Java program. It exists physically. It is a software process that `converts the compiled Java byte code to machine language`.
-  - Garbage collection thread: JVM has a garbage collection thread that `automatically` removes the unused memory from the heap memory.
-- jvm(platform dependent): .class is a compiled file and can directly run any where. but to generate the .class file we need the jdk which is platform dependent.
-  – A documentation generator (javadoc)
+
+Installation:
 ```bash
 path:      C:\Program Files\Java\jdk-16.0.1\bin
 classpath: C:\Program Files\Java\jdk-16.0.1\lib
 JAVA_HOME: C:\Program Files\Java\jdk-16.0.1
 ```
+
+## Architecture: 
+- ![JDK(JRE(JVM, setofLibaries, other files, classLoder) dev tools [javac, java])](https://static.javatpoint.com/images/jdk2.png) [JDK, JRE, JVM image](res\jdk_jre_jvm.jpg) [chatgpt](https://chatgpt.com/share/67867c1e-0430-800f-b88b-9861ff1e18b9)
+1. JDK (Java Development Kit)
+	- **What it is:** JDK is a full toolkit for developing Java applications. It includes JRE, development tools (e.g., `javac` for compiling), and debugging utilities.
+	- **Uses:** Required for writing, compiling, and debugging Java programs. | Developers use it to create Java applications.
+2. JRE (Java Runtime Environment)
+	- **What it is:** JRE is the environment required to run Java applications. It includes the JVM and libraries/classes necessary for execution.
+	- **Uses:** Provides libraries and tools for running Java applications. | Suitable for users who want to run Java programs but not develop them.
+3. JVM (Java Virtual Machine)
+   - **What it is:** JVM is the runtime engine that executes Java bytecode. It's a part of JRE and ensures that Java programs run consistently across different platforms ("Write Once, Run Anywhere").
+   - **Uses:** Converts bytecode to machine-specific instructions. | Manages memory (Garbage Collection). | Ensures security and performance of Java programs.
 ```css
 Architecture 
 	a. JDK -> Java Development Kit     ->will have files/exe which will support building of java app
+				.java ->compile/debug->.class | JDK converts `.java` to `.class` javac compiler which is provided by jDK ***
 	b. JRE -> Java Runtime Environment ->supports execution application build on java (platform independant)| only gives the envirment | executing Java bytecode | libraries and other components necessary for running Java applications | When you install the JRE on your system, you can run Java programs without needing to compile them yourself
 	C. jvm -> java virtual machine (OS specific)
-				.java ->compile/debug->.class
 				.class-> executed ->.class which is platform independant
 ```
 
-JDK converts `.java` to `.class` javac compiler which is provided by jDK ***
-############################################################################################
 Why?
-	*Secure : Two way checking of the .class 
-		
-	1. Platform independant 
-	JVM ->OS dependant 
-		->.class which is platform independant 
-	2. Scalable 
-		OOP 
-			Abstraction
-			Encapsulation
-			Inheritance
-			Polymorphism 
-	3. Threading
-	4. Collection
-	5. JDBC
-	6. Servelt & JSP 
-	7. Packaging	
-	....
 What?
 How ?
 
 
 ## 🐳 Baby Runn
-
 ############################################################################################
+
 - Run the Java program:
 ```bash
   javac -d . Main.java
   java com.trainer.Main
 ```
-- More than one class in a Folder with package:2
+- Direct run the java file: it will compile and run the file
+```bash
+	java Main.java
+```
+- More than one class in a Folder with package:
 ```bash
 javac -d . *.java
 java com.training.learn.basics.Main AYON 'SSP - software specialist programmer' 1 23 0.4
@@ -126,12 +118,11 @@ java com.training.learn.basics.Main AYON 'SSP - software specialist programmer' 
   Step2 -> java Main-> loading the class-> checking is it valid file-> if valid -> output
                                     else     -> error	
 ############################################################################################
+
 **CODE Explanation:**
 - Main Method: https://youtu.be/P-_Nzi_mCRo?si=e5UsnjQGmrB6R4Sb
-- JRE calls main method
-- *Code:* [src.com.training.learn.basics.\*.java]
+- *Code:* [src.com.training.learn.basics.\*.java] `tuts_java`
 - .java file must have one public class and it should be saved with the name of public class
-- understood what is package?
 - ```
   compile the code which has first line as package -> javac -d . *.java 
   execute -> java com.training.Main3 (using the classified name of the class)
@@ -213,7 +204,9 @@ package com.example.beans;
 package com.example.constants;
 package com.example.enums;
 // example -> zomato, swiggy, foodpanda, ubereats
-package com.zomato.model;
+package com.swiggy.model
+package com.google.maps
+package com.microsoft.office
 package com.obms.model;
 package com.obms.view;
 ```
@@ -235,8 +228,9 @@ Some of the commonly used tags in documentation comments:
 
 ### Java Naming Convention
  - package -> smallCase -> com.trainer.java
-    - com.training.zomato
-    - com.training.swiggy
+    - com.swiggy.model
+    - com.google.maps
+    - com.microsoft.office
  - class -> PascalCase -> Circle, Rectangle
  - interface -> PascalCase -> Shape, Drawable
  - method -> camelCase -> calculateArea(), getArea()
@@ -249,17 +243,16 @@ Some of the commonly used tags in documentation comments:
 
 
 
-## Primitive Types
+## Primitive Types 
 Primitive Types(simple types):
-  – byte, short, int, and long for integer values
-  – float and double for real/fractional values
-  – char for letters, digits, symbols, punctuation
-  – boolean for true and false
+  - byte, short, int, and long for integer values
+  - float and double for real/fractional values
+  - char for letters, digits, symbols, punctuation
+  - boolean for true and false
 Literals(constants values):
   - values of one of these types
-  – 'A', -7, 3.5, true
+  - 'A', -7, 3.5, true
   eg. int x = 10; [variable var_name = value;] where 10(value) is literal.
-
 
 8 Data types
 Primitive: byte,short,int,long,float,double,char,boolean
@@ -285,7 +278,6 @@ Networking   Source <====> Destination => Object
 1. wrapping		int->Integer
 2. unwrapping  Integer=>int
 
-
 Java Numeric Default :  check(package com.training.demo;)
 Number without decimal : int			123,12345
 Number with decimal    : double 		12.12
@@ -296,42 +288,113 @@ Long  : 123L
 -  Incase of local variables we must follow 
 	1. declare
 	2. initialize
-	3. use
+	3. use 
 
-1. Local variable -> function paratmeters {} variable 
+1. Local variable -> function paratmeters {} variable
 2. Field/Instance -> class , private, the get initialised when constructor => multiple copies
-3. static variable-> single copy   ***
+3. static variable-> single copy(for all object) *** 
+### Memory Allocation and Behavior of Primitive Data Types in Java
+```java
+1. Local Variables (Declared Inside Methods)
+void someMethod() {
+    int var; // Memory is NOT allocated until assigned. | declared | uninitialized
+    var = 10; // Now memory is allocated on the `stack`.
+}
 
-String concatenation : we used +
-System.out.println(""+greeting1.getGreetingNo());
-greeting1.getGreetingNo()=> calling a method on greeting1 object
+2. Instance Variables (Declared at Class Level Without static)
+class MyClass {
+    int var; // Memory is allocated on the heap when an object is created.
+}
 
+MyClass obj = new MyClass(); // `var` is initialized to 0 and stored in the heap. | 
+// obj (the reference variable) is stored in stack memory. |
+// The object created by new MyClass() is stored in the heap. | 
+// The reference variable obj in the stack points to the object's memory address in the heap.
+stack [obj(poiting to `1100`)] -> heap "add(1100): [var = 0]"
+
+3. Static Variables (Declared at Class Level with static)
+class MyClass {
+    static int var; // Stored in the method area(part of JVM memory)., initialized to 0. | Memory is allocated only once when the class is loaded,
+}
+```
+### memory management and object lifecycle
 - `Premitive data` types are stored in `stack` and can't access if not initialized(a = 5) | Objects are stored in Heap if not initialized then it will be `null` (like array contains 0, string contains null object contains null...).
 - `Heap memory` is not contiguous.
   - static block: loaded even before object creation.
   - object block: only if we create obj.
 
-- in `java premitive datatypes` are not created as objects(they are stored in stack it self) but String is created as object. (objects are stored in stack memory) but 10, 2.95, 'a', 9_452_123 are `stored directly in the compiled code` cause they are objects.
+- in `java premitive datatypes` are not created as objects(they are stored in stack it self) but String is created as object. (objects are stored in heap memory) but 10, 2.95, 'a', 9_452_123 are `stored directly in the compiled code` cause they are objects.
   - `String str = new String("Hello");` // str is stored on the stack, but the String object "Hello" is stored on the heap
 - what ever things are stored in the stack it give a unique id to it. that unique id -> contains the address of the object in the heap/stored directly in the compiled code.
 - when a non-premitive is `final` we cannot reassign it.
 
+**Understanding the Range of `int` in Java (4 Bytes / 32 Bits)**
+```txt
+int -> 4 bytes -> 32 bits -> 2^32 -> -2^31 to 2^31-1
+x 0 0 0 0 0 0 0 
+x 1 1 1 1 1 1 1
+x = 1 (-ve) and 0 (+ve)
+rest of 7 bits are used to store the number
+
+Example:
+0 0 0 0 0 0 0 binary = 0 Decimal
+1 1 1 1 1 1 1 binary = 127 Decimal
+Max = 2^31-1 = 2147483647
+Min = -2^31 = -2147483648
+
+Example:
+1 0 0 0 0 0 0 0  binary = -2^31 = -2147483648
+1 0 0 0 0 0 1 1  binary = -2^31+3 = -2147483645
+Long (8 bytes)
+Short (2 bytes)
+Byte (1 byte)
+Char (2 bytes) Unicode ASCII eg. 'A' = 65
+Boolean (1 bit)
+Float (4 bytes) eg. 3.14f or 3.14F
+Double (8 bytes) eg. 3.14 (default) or 3.14d or 3.14D
+```
+
+## Type conversion and Type casting
+- Type conversion is automatic (also called `implicit casting` or "type promotion").
+- Typecasting is an `explicit conversion` performed by the programmer
+```java
+int x = 10;
+long y = x; // implicit conversion
+int z = (int) y; // explicit conversion
+```
+
 ## Control Statements
 > Javatpoint
-
+1. Decision Making
+	 - if-else-if-else ladder
+	 - nested if statement
+	 - switch statement
+2. Looping
+	 - for loop
+	 - while loop
+	 - do-while loop
+	 - for-each loop
+3. Jumping
+   - break statement
+	 - continue statement
+	 - return statement
 
 ## Object Oriented Programming in Java
 OOPs (Object-Oriented Programming System)
-Object means a real-world entity such as a pen, chair, table, computer, watch, etc. Object-Oriented Programming is a methodology or paradigm to design a program using classes and objects. It simplifies software development and maintenance by providing some concepts:
-  1. Object
-  2. Class
-  3. Inheritance
-  4. Polymorphism
-  5. Abstraction
-  6. Encapsulation
+**Class:** A blueprint or template that defines the structure and behavior (properties and methods) of objects.
+   *Example:* A "Car" class with attributes like color, brand, and speed and methods like start() and stop(). | logical construct
+**Object:** (a real-world entity) An instance of a class that holds actual data and can use the defined methods.
+   *Example:* myCar = Car() where myCar is an object of the Car class, and it could have color = "red" and speed = 120. | physical reality (occupies memory)
+Object-Oriented Programming is a methodology or paradigm to design a program using classes and objects. It simplifies software development and maintenance by providing some concepts:
+> Encapsulation → Abstraction → Inheritance → Polymorphism
+  1. Class
+  2. Object
+  3. Encapsulation
+  4. Abstraction
+  5. Inheritance
+  6. Polymorphism
 
 ### Object-Oriented design PRINCIPLEs:
-
 Apart from these concepts, there are some other terms which are used in Object-Oriented design:
   1. **Coupling:** refers to the degree of dependency between different classes or modules. Low coupling is desirable because it promotes better code reusability, maintainability, and flexibility.
   2. **Cohesion:** in software engineering refers to the degree to which the elements within a module or component belong together. It's a measure of how strongly related and focused the responsibilities of a module are. High cohesion is desirable because it leads to modules that are focused, understandable, and easier to maintain.
@@ -397,71 +460,6 @@ If any class full fils below its a Java Bean
 2. class has private data members 
 3. class has public getter and setter for private datamembers 
 4. No public arg-constructor
-
-
-
-### Types of classes:
-1. Concreate class: class with implementation(POJO, JavaBean) | public class ClassName{}  | Instantiable | Cannot be Abstract
-2. Abstract class: class without implementation | public abstract class ClassName{} | can't be instantiated | Interface(100%) |
-3. Nested/inner class: class inside a class | public class ClassName{ public [static] class InnerClass{} } | can be instantiated [must do concepts]
-   1. Static Classes
-   2. Non-static Classes
-4. Anonymous class: class without a name | Encapsulation topic | inner class without a name | new InterfaceName(){ //code } | can't be instantiated
-5. Singleton class: class with only one object | public class ClassName{ private static ClassName obj = new ClassName();}
-6. 'private ClassName(){} public static ClassName getInstance(){ return obj; }
-7. final class: Final class is a complete and immutable class, so data elements do not change by external access | Final class provides security as it cannot be extended or inherited by any other class,
-
-#### Singleton class in Java 
-**Code:** [src.com.training.learn.singleton.\*.java] and multithreading
-> [singleton-class-in-java](https://www.javatpoint.com/singleton-class-in-java)
-- Lazy Initialization
-- can be instantiated(exactly one object).
-- Thread Safety
-- Serialization: it is a marker interface(interface that doesn't declare any required methods)
-
-
-```java
-public class Singleton {
-    // Private static variable to hold the single instance of the class
-    private static Singleton instance;
-
-    // Private constructor to prevent instantiation from outside
-    private Singleton() {}
-
-    // Static method to get the single instance of the class
-    public static synchronized Singleton getInstance() {
-        // Lazy initialization: create the instance only if it hasn't been created yet
-        if (instance == null) {
-            instance = new Singleton();
-        }
-        return instance;
-    }
-
-    // Other methods of the class
-    public void showMessage() {
-        System.out.println("Hello, I am a Singleton!");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        // Get the Singleton instance
-        Singleton singletonInstance1 = Singleton.getInstance();
-        // Call a method on the instance
-        singletonInstance1.showMessage();
-
-        // Trying to create another instance
-        Singleton singletonInstance2 = Singleton.getInstance();
-
-        // Both instances point to the same object
-        if (singletonInstance1 == singletonInstance2) {
-            System.out.println("Both instances are the same object.");
-        } else {
-            System.out.println("Instances are different.");
-        }
-    }
-}
-```
 
 ### Class && Object
 ref:
@@ -610,6 +608,7 @@ Constructor
 
 #### static keyword
 > [static-keyword-in-java](https://www.javatpoint.com/static-keyword-in-java)
+- *single copy(for all object)* | The static keyword in Java is used to denote that a member (variable, method, or block) belongs to the class rather than any specific instance. It allows sharing of the member across all objects of the class, with a single copy in memory.
 
 - static, final, and private methods are bound at compile-time due to their inherent characteristics.
 **The static can be:**
@@ -639,9 +638,77 @@ Type of methods:
 3. this() can be used to invoke current class constructor. | ClassName(){ this(args); }  | ClassName(arg1, arg2, arg3){} ClassName(arg1, arg2, arg3, arg4){ this(arg1, arg2, arg3); this.arg4 = arg4 } *** |
 4. this can be passed as argument in the method call.  | this.methodName(this); |
 5. this can be passed as argument in the constructor call. | A(){ B b=new B(this);  //lines -> B(A obj){} } |
-6. this can be used to return the current class instance from the method. | return this; |
+6. this can be used to return the current class instance from the method. | return this;
+
+#### Object lifecycle and memory management
+... *incomplete need to find the notes already completed...*
+
+state of the object: value of its datatype
+identity of the object: a and b is pointing to the same object in the heap
+behavior of the object: methods of the object
+
+### Types of classes:
+1. Concreate class: class with implementation(POJO, JavaBean) | public class ClassName{}  | Instantiable | Cannot be Abstract
+2. Abstract class: class without implementation | public abstract class ClassName{} | can't be instantiated | Interface(100%) |
+3. Nested/inner class: class inside a class | public class ClassName{ public [static] class InnerClass{} } | can be instantiated [must do concepts]
+   1. Static Classes
+   2. Non-static Classes
+4. Anonymous class: class without a name | Encapsulation topic | inner class without a name | new InterfaceName(){ //code } | can't be instantiated
+5. Singleton class: class with only one object | public class ClassName{ private static ClassName obj = new ClassName();}
+6. 'private ClassName(){} public static ClassName getInstance(){ return obj; }
+7. final class: Final class is a complete and immutable class, so data elements do not change by external access | Final class provides security as it cannot be extended or inherited by any other class,
+
+#### Singleton class in Java 
+**Code:** [src.com.training.learn.singleton.\*.java] and multithreading
+> [singleton-class-in-java](https://www.javatpoint.com/singleton-class-in-java)
+- Lazy Initialization
+- can be instantiated(exactly one object).
+- Thread Safety
+- Serialization: it is a marker interface(interface that doesn't declare any required methods)
 
 
+```java
+public class Singleton {
+    // Private static variable to hold the single instance of the class
+    private static Singleton instance;
+
+    // Private constructor to prevent instantiation from outside
+    private Singleton() {}
+
+    // Static method to get the single instance of the class
+    public static synchronized Singleton getInstance() {
+        // Lazy initialization: create the instance only if it hasn't been created yet
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+
+    // Other methods of the class
+    public void showMessage() {
+        System.out.println("Hello, I am a Singleton!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Get the Singleton instance
+        Singleton singletonInstance1 = Singleton.getInstance();
+        // Call a method on the instance
+        singletonInstance1.showMessage();
+
+        // Trying to create another instance
+        Singleton singletonInstance2 = Singleton.getInstance();
+
+        // Both instances point to the same object
+        if (singletonInstance1 == singletonInstance2) {
+            System.out.println("Both instances are the same object.");
+        } else {
+            System.out.println("Instances are different.");
+        }
+    }
+}
+```
 
 ### Inheritance
 **Code:** [src.com.training.learn.inheritance.\*.java]
@@ -2368,3 +2435,5 @@ User us = (User) session.getAttribute("userobj");
 
 to learn:
 native methods
+
+also take the code from: C:\CODE\1]_Lets_Compile\3]_learning_java\java_coffee\README.md
