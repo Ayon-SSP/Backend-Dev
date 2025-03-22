@@ -1752,7 +1752,7 @@ Three Principles:
 
 - A single store that holds the entire state of the application.
 
-Action:
+**Action:**
 - an action is a plain JavaScript object that describes the change.
 - and contains the type of action and the payload.
 eg. 
@@ -1762,13 +1762,12 @@ eg.
   info: 'First redux action',
   payload: res.data
 }
-
-Reducers:
+```
+**Reducers:**
 - Specify how the apps state changes in response to actions sent to the store.
 const reduxMethos => (previousState, action) return newState
 
 dispatch(action) -> reducer -> store -> state -> UI
-```
 
 
 
@@ -1952,9 +1951,54 @@ const store = createStore(rootReducer, applyMiddleware(logger))
 - it is the standart way to perform async action (apply middle ware)
 definition: A Redux thunk is a middleware that allows you to write action creators in Redux that return a function (instead of an action object) to handle asynchronous logic or complex synchronous logic, such as fetching data or conditionally dispatching actions.
 
+#### Redux Persist
+> `redux-persist` is a library used to persist and rehydrate a Redux store. This means that it saves the Redux state to a storage mechanism (like localStorage or sessionStorage) and retrieves it when the application is reloaded, ensuring that the state is maintained across sessions.
+
+```bash
+npm install redux-persist
+```
+  - Create a `persistConfig` object with the desired configuration options.
+  ```jsx
+  // filepath: /path/to/store.js
+  import { createStore } from 'redux';
+  import { persistStore, persistReducer } from 'redux-persist';
+  import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+  import rootReducer from './reducers'; // your root reducer
+
+  const persistConfig = {
+    key: 'root',
+    storage,
+  };
+
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+  const store = createStore(persistedReducer);
+  const persistor = persistStore(store);
+
+  export { store, persistor };
+  ```
+- Wrap your application with PersistGate:
+  ```jsx
+  // filepath: /path/to/index.js
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import { Provider } from 'react-redux';
+  import { PersistGate } from 'redux-persist/integration/react';
+  import { store, persistor } from './store';
+  import App from './App';
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>,
+    document.getElementById('root')
+  );
+  ```
+  This setup will ensure that your Redux state is persisted across page reloads.
 
 ## stateless & stateful application.
-
 
 ## React Router
 #### Router
