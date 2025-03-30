@@ -1473,7 +1473,7 @@ export default React.memo(MemoComp)
 
 ### Portals & Error Boundaries
 TODO: ReactJS Tutorial - 31 - 32
-### Higher Order Components
+### Higher Order Components [Link](https://youtube.com/shorts/zKUSXXcdTDA?si=txtpC172xoYsyXQA)
 TODO: ReactJS Tutorial - 33 - 35
 ### Render Props
 TODO: ReactJS Tutorial - 36 - 37
@@ -1724,7 +1724,12 @@ root.render(<Page />);
 - redux is for Javascript applications.
 - client side state management library. unlike server side state management like `TanStack Query`.
 - Its architecture revolves around a **unidirectional data flow**
-- 
+- All redux hooks: [ChatGPT](https://chatgpt.com/share/67e98e52-9ed4-800f-90d2-eb6c31a03a2c)
+  - `useSelector`: A hook that allows you to extract data from the Redux store state, using a selector function.
+  - `useDispatch`: A hook that returns a reference to the dispatch function from the Redux store, allowing you to dispatch actions.
+  - `useStore`: A hook that returns the Redux store instance, allowing you to access the store directly.
+  - `useActions`: A custom hook that allows you to bind action creators to the dispatch function, making it easier to dispatch actions.
+  - `useMappedState`: A custom hook that allows you to map the Redux store state to component props, similar to `mapStateToProps` in `connect()`.
 - 
 ```bash
 npm install redux react-redux

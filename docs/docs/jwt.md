@@ -51,6 +51,17 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9  // Header
      )
     ```
 
+### JWT algo switch: [Find JWT Algorithm Spring](https://chatgpt.com/share/67d29479-539c-8013-b0e3-0642570b80fb) | `HS256`, `RS256`
+## ✅ JWT Algorithms
+**symmetric algorithm vs asymmetric algorithm** (same key, public and private keys)
+
+| Algorithm | Description |
+| --------- | ----------- |
+| `HS256`   | HMAC with SHA-256 |
+| `HS384`   | HMAC with SHA-384 |
+| `HS512`   | HMAC with SHA-512 |
+| `RS256`   | RSA with SHA-256 (asymmetric) |
+| `ES256`   | ECDSA with SHA-256 (asymmetric) |
 
 ### Refresh Token:
 > JWT Refresh Tokens are used to obtain a new access token without requiring the user to reauthenticate. (renew the access token)

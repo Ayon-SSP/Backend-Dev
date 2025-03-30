@@ -40,52 +40,36 @@
     }
   </script>
 ```
-### Variables
-> For more detail go to W3Schools
-#### Types:
+### Variables types:
+What is the difference between var, let, and const?
+`var`: Function-scoped, can be redeclared and updated, and is hoisted.​
+`let`: Block-scoped, can be updated but not redeclared within the same scope.​
+`const`: Block-scoped, cannot be updated or redeclared; must be initialized during declaration
 ```javascript
-// var
-var reDeclarableReAssignable = 10;
-reDeclarableReAssignable = 20;
-var reDeclarableReAssignable = 30;
-reDeclarableReAssignable = 40;
-reDeclarableReAssignable = "Hi this is string!";
 
-// let
-let reAssignable = 30;
-reAssignable = 40; // cant declare again
-reAssignable = "Hi this is string!";
-reAssignable = true;
-reAssignable = 4;
-// let reAssignable = 50; // cant declare again
+block scope: { ... } // let, const
+function scope: function() { ... } // var, let, const
+global scope: window // var, let, const
 
-// const
-// Use const when you declare: Array, Object, Function, RegExp
-const z = 40;
-// reference is constant, not the value which are in the Heap.
-const cars = ["Saab", "Volvo", "BMW"];
-cars[0] = "Toyota";
-cars.push("Audi");
-const car = {type:"Fiat", model:"500", color:"white"};
+// a complete short and crisp example
 
-const x = 10;
-// Here x is 10
-{
-  const x = 2;
-  // Here x is 2
+function myFunk() {
+  var x = 10; // function scope
+  let y = 20; // block scope
+  const z = 30; // block scope
+
+  if (true) {
+    var a = 40; // function scope
+    let b = 50; // block scope
+    const c = 60; // block scope
+    console.log(x, y, z, a, b, c); // prints all variables
+  }
+
+  console.log(x, y, z, a); // prints x, y, z and a only
+  console.log(b); // ReferenceError: b is not defined
+  console.log(c); // ReferenceError: c is not defined
 }
-// Here x is 10
 
-
-
-const x = 2;     // Allowed
-x = 2;           // Not allowed
-var x = 2;       // Not allowed
-let x = 2;       // Not allowed
-const x = 2;     // Not allowed
-
-
-// z = 50; // Error
 ```
 #### Data Types:
 ```javascript
@@ -130,8 +114,6 @@ console.log(person.fullName());
 x = new String(); or y = new Number();
 // Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
 
-
-
 ```
 #### Operators:
 > [Link](https://www.w3schools.com/js/js_operators.asp)
@@ -146,10 +128,15 @@ sum -> 11 Doe790
 
 typeof(5) -> number // Returns the type of a variable
 ```
+**Differenct '==' and '==='**
+1. `==` (loose equality) checks for value equality but allows type coercion (i.e., it converts types if necessary).
+2. `===` (strict equality) checks for both value and type equality, without type conversion.
+
 ```js
 0 == false   // true
 0 === false  // false, because they are of a different type
 1 == "1"     // true, automatic type conversion for value only
+1 == ["1"]   // true
 1 === "1"    // false, because they are of a different type
 null == undefined // true
 null === undefined // false
@@ -494,8 +481,25 @@ const y = x.getElementsByTagName("p");
    let subtract = () => console.log("Subtract");
    ```
 
+### JavaScript Closures
+- A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope.
+```js
+function outerFunction() {
+  let outerVariable = "I am outside!";
+  
+  function innerFunction() {
+    console.log(outerVariable); // Accessing outerVariable from the outer scope
+  }
+  
+  return innerFunction; // Returning the inner function
+}
+
+const closure = outerFunction(); // closure is now a reference to innerFunction
+```
+
 
 ### JS Async
+> Callbacks, Promises, Async/Await
 #### **Callback Hell:**
 ```js
 fetch(url, (result) => {

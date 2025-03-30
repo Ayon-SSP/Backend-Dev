@@ -89,7 +89,17 @@ An **API Gateway** is a server that acts as an entry point for multiple backend 
 
 
 
-
+API Methods:
+- **GET**: Retrieve data from the server.
+- **POST**: Send data to the server to create a new resource. (not idempotent)
+- **PUT**: Update an existing resource or create it if it doesn't exist.
+- **PATCH**: Partially update an existing resource.
+- **DELETE**: Remove a resource from the server.
+- **HEAD**: Retrieve metadata about a resource without the body.
+- **OPTIONS**: Describe the communication options for the target resource.
+- **TRACE**: Echo the received request back to the client.
+- **CONNECT**: Establish a tunnel to the server.
+- **LINK**: Create a link between two resources.
 
 
 ### Service-Oriented Architecture (SOA): [YT short](https://youtube.com/shorts/WS_u-_gnoVI?si=zXFQMqRXcKuRapjh)
