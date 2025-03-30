@@ -2,6 +2,15 @@
 # System Design Primer: 
 Index: [List](https://chatgpt.com/share/67cff34d-1518-8013-9c2d-d6641bf143c9)
 
+1. Scalability
+2. Performance
+3. Security
+4. Reliability & Availability
+5. User Experience (UX)
+6. Maintainability
+7. Infrastructure & DevOps
+8. Cost Efficiency
+9. Business & Growth Considerations
 
 Terms:
 **Web server:** A web server is software that stores, processes, and delivers web pages to clients (like browsers) over the internet using the HTTP/HTTPS protocol. It handles requests from clients and responds with web content (HTML, CSS, JS, images, etc.). Examples: Apache, Nginx, Tomcat, Node.js (used as a server for JavaScript-based apps)

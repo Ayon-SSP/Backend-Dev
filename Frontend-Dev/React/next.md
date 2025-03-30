@@ -1,20 +1,3 @@
-
-**Origin server:** An origin server is a computer `running one or more programs` that are designed to listen for and process incoming Internet requests.
-
-**Edge server:** [Link](https://youtu.be/yOP5-3_WFus?si=8LctVNyXOlkwVncR)
-
-# Reverse Proxy and Proxy [YT](https://youtu.be/4NB0NDtOwIQ?si=jk4L4uVX6TCEv7rO)
-**Forward Proxy:** 
-> [Reverse Proxy](https://www.indusface.com/blog/what-is-reverse-proxy/): A reverse proxy is a `server that sits between the client and the origin server`. It accepts requests from clients and forwards them to the appropriate server. It also receives responses from the server and sends them back to the client.
-![Reverse Proxy](https://www.indusface.com/wp-content/uploads/2023/04/Forward-proxy-vs-reverse-proxy-1.png)
-- NGINX 
-Reverse proxies can also perform other tasks in front of the origin server, such as 
-1. Protects a web site
-2. load balancing
-3. caching and
-4. handles SSL encryption
-
-
 [Figma Dev mode](https://help.figma.com/hc/en-us/sections/15023066873239-Dev-Mode)
 
 SSG, SSR, CSR: Special Service Group, static Generating(pre-rendring)
@@ -254,3 +237,51 @@ function PollingComponent() {
 1. **Redux Toolkit (RTK)**: [Best state management solution](https://chatgpt.com/share/6777b6d6-6f14-8013-9501-aa69515be606)
    - Works seamlessly with **SSR/ISR** (Server-Side Rendering / Incremental Static Regeneration). `npm install @reduxjs/toolkit react-redux next-redux-wrapper redux-thunk redux-persist`
 2. `next-redux-wrapper`: [](https://chatgpt.com/share/6777b5a9-ffb0-8013-ad4b-baa150e78b8a)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Extra:
+---
+Next.js 15 has 4 distinct caching mechanisms,each working at different stages of your app to boost performance.
+Here’s a quick breakdown:
+
+1. Request Memoization (Pre-Request Cache) 💾
+ • Prevents duplicate API calls in the same render cycle.
+ • If two components fetch the same data, the second one uses the cached result.
+ • Only works with GET requests in Server Components.
+
+2. Data Cache 🗄
+ • Caches API responses for all users.
+ • Data persists even after deployment unless manually cleared.
+ • Can revalidate with time-based or on-demand revalidation.
+
+3. Full Route Cache 🧱
+ • Caches entire static pages at build time.
+ • Boosts performance for static content.
+ • Automatically invalidated if dynamic data is detected.
+
+4. Router Cache (Client-side Cache) 🔄
+ • Caches routes visited by users (stored on the client).
+ • Makes page navigation super-fast.
+ • Cache duration:
+ • Static routes: 5 minutes
+ • Dynamic routes: 30 seconds
+ • Cache clears on page refresh or tab close.
+---

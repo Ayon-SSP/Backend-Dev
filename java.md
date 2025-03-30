@@ -499,3 +499,10 @@ If any class full fils below its a Java Bean
 
 # Questions
 Q: In classs with Without `this` and with `this` keyword?: [ChatGpt](https://chatgpt.com/share/67dce37f-0248-800f-a89f-f08bcc82efd2)
+Q: Automatic Memory Management:
+  Java uses Garbage Collection (GC) to automatically free memory occupied by objects that are no longer reachable, reducing memory leaks.
+Q: Heap Memory Usage:
+  Objects are allocated memory dynamically on the heap when created using the `new` keyword.
+  References to these objects are stored in the stack.
+
+

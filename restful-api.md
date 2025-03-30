@@ -66,3 +66,49 @@ Also explore
 2. asynchroneous logging: log the request and response in a separate thread.
 3. Caching: cache the response of the API. use redis or memcached.
 4. Payload Compression: compress the response payload.
+
+
+
+
+1. Request Memoization (Pre-Request Cache) 💾
+ • Prevents duplicate **API calls** in the same render cycle.
+ • If two components fetch the same data, the second one uses the cached result.
+ • Only works with GET requests in Server Components.
+
+
+
+### API Gateway:
+An **API Gateway** is a server that acts as an entry point for multiple backend services. It manages API requests, handles authentication, monitors traffic, and ensures security. It simplifies client interactions by providing a single access point to multiple services. eg & tools. [chatGPT](https://chatgpt.com/share/67e37a33-1680-800f-92e3-3ae48c5077d3) | AWS API Gateway, NGINX
+**Key Features of an API Gateway**
+- *Request Routing*: Directs client requests to appropriate backend services.
+- *Rate Limiting*: Controls API request limits to prevent overload. Max requests per second (e.g., 100 req/sec) from a IP.
+- *Authentication & Authorization*: Manages security protocols (OAuth, JWT, API keys).
+- *Load Balancing*: Distributes traffic among multiple servers.
+- *Caching*: Improves response time by storing frequently accessed data.
+- *Monitoring & Logging*: Tracks API performance and detects errors.
+
+
+
+
+
+
+### Service-Oriented Architecture (SOA): [YT short](https://youtube.com/shorts/WS_u-_gnoVI?si=zXFQMqRXcKuRapjh)
+
+
+### Monolithic vs Microservice Architecture: [YT](https://youtu.be/NdeTGlZ__Do?si=_70mubgL0xTI-NN4)
+**Monolithic Architecture:** Single-tiered software application in which different components are combined into a single program from a singleplatform. [payment, order, product, Email] all services at one place.
+**Microservice Architecture:** A software development technique that structures an application as a collection of small, loosely coupled services. Each service is self-contained and can be deployed independently. [payment, order, product, Email] all services at different places. can use gRPC for faster communication between services.
+TODO: pending...
+
+
+
+
+
+
+
+
+
+
+
+
+
