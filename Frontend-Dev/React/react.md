@@ -758,6 +758,20 @@ export default Toggle;
 #### Binding Event Handlers
 1. Binding in the render method. this keyword will not work.
 
+#### Side effect & Pure: 
+> Anything that happens outside the scope of the component rendering itself.
+**⚛️ In React, a side effect includes things like:**
+- Fetching data from an API
+- Manually modifying the DOM
+- Subscribing to a WebSocket or event listener
+- Setting timers (setTimeout, setInterval)
+- Logging
+- Interacting with local storage
+- Analytics tracking
+
+**🔄 Why are they “side effects”?**
+Because React’s rendering is supposed to be *pure—meaning*, given the same inputs (props, state), it should return the same output (JSX). A side effect breaks that purity, because it does something that affects the outside world or depends on it.
+
 
 ### React.StrictMode
 > [YT video](https://youtu.be/XUwzASyHr4Q?si=W50qL7wqt4yXC137)
@@ -1407,7 +1421,7 @@ w3: [React Component Lifecycle](https://www.w3schools.com/react/react_lifecycle.
 10. A: componentDidUpdate()
 
 #### Unmounting
-1. componentWillUnmount() : invoked immediately before a component is unmounted and destroyed. perform cleanup: cancel network requests, remove event listeners, cancel subscriptions.
+1. componentWillUnmount() : invoked immediately before a component is unmounted and destroyed. perform cleanup: cancel network requests, remove event listeners, cancel subscriptions. eg. window.addEventListener("resize", () => {}); or "load", "beforeunload", "unload", "copy", "online" → Fires when the device goes online, "offline"
 
 #### Error Handling
 1. static getDerivedStateFromError() : invoked after an error has been thrown by a descendant component. return a value to update state.
@@ -1446,15 +1460,20 @@ or can use <> </> instead of <React.Fragment> </React.Fragment>
 2. They do not re-render if the state or props have not changed.
 3. They do not have access to the lifecycle methods.
 4. They are used to improve performance.
+
+Just extend the `PureComponent` instead of Component.
 ```jsx
 <ParentComp />
 
-just extend the PureComponent instead of Component.
+import React, { PureComponent } from "react";
+
+class MyComponent extends PureComponent {}
 ```
 
 ### Memo:
 > A higher-order component that prevents a component from re-rendering when its props don't change
 1. pure components for functional components.
+2. Good for Pure + expensive-to-render components.
 ```jsx
 export default React.memo(MemoComp)
 ```
@@ -1654,25 +1673,85 @@ const addItem = () =>{
 
 onClick={addItem}
 ```
+**issue with `setCount(count + 1)`**
+const [count, setCount] = useState(0);
+```tsx
+const handleClick = () => {
+  setCount(count + 1); // insted do setCount(prevCount => prevCount + 1);
+  setCount(count + 1);
+  setCount(count + 1);
+};
+```
 
 #### useEffect Hook
 1. useEffect is a hook that allows you to perform side effects in functional components.
-Flow:
-1. render the component(Mount): only the body()
-2. if any thing from the dependency array changes then useEffect will first run the cleanup code and then run the useEffect code.
-      first distroy it self Unmount -> then Mount.
-```js
-import React, {useState, useEffect} from 'react'
-const [count, setCount] = useState(0);
+2. In React, a `side effect` refers to any code that has an effect outside of the component itself, such as changing the DOM, making an HTTP request, or setting up a timer. Side effects are typically performed in a React component using the useEffect hook.
+3. Runs **after** the component renders.
+
+## Syntax
+```jsx
 useEffect(() => {
-  // the code that we want to run
-  document.title = `You clicked ${count} times`
-  console.log('useEffect - Updating document title', count)
+  // Side effect logic here
+  // after the first render and every update
+  // e.g., API calls, subscriptions, DOM manipulation, etc.
   return () => {
-    // cleanup code
-  }
-}, [count]) // dependency array
+    // Cleanup (optional)
+    // about to be unmounted
+  };
+}, [dependencies]);
 ```
+
+## When does it run?
+| Dependency Array                  | When it Runs                             |
+| --------------------------------- | ---------------------------------------- |
+| `useEffect(() => {...})`          | On every render                          |
+| `useEffect(() => {...}, [])`      | Only on mount (like `componentDidMount`) |
+| `useEffect(() => {...}, [state])` | When `state` changes                     |
+
+## Common Use Cases
+- **Fetching data** (API calls)
+- **Event listeners** (attach & cleanup)
+- **Updating the DOM**
+- **Timers (setTimeout, setInterval)**
+- **Subscribing & Unsubscribing**
+w
+## Example - Fetch Data
+```jsx
+import { useEffect, useState } from "react";
+
+function App() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("https://api.example.com/data")
+      .then(res => res.json())
+      .then(setData);
+  }, []); // Runs only on mount
+
+  return <div>{data ? JSON.stringify(data) : "Loading..."}</div>;
+}
+```
+
+## Cleanup in `useEffect`
+Used to avoid memory leaks, e.g., **removing event listener**:
+```jsx
+useEffect(() => {
+  const handleResize = () => console.log(window.innerWidth);
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+```
+
+## Key Points
+✅ Runs **after** render  
+✅ Dependencies control when it runs  
+✅ Cleanup prevents memory leaks  
+✅ Use `useEffect` wisely to optimize performance!
+
+
+
+
 
 ```jsx
 function WarningBanner(props) {
@@ -2024,3 +2103,56 @@ import { Link } from 'react-router-dom';
  <NavLink to="/login" style={{ textDecoration: 'none', color: 'inherit' }}
  auth set class='Active'
  ```
+
+## 🚀 Improving & Optimizing a React App
+
+#### 1️⃣ Optimize Rendering & Component Performance
+- **Use `React.memo()`** to prevent unnecessary re-renders of functional components.
+- **Use `useCallback()` & `useMemo()`** to optimize function and value references in child components.
+- **Lazy Load Components** using `React.lazy()` & `Suspense` to reduce initial load time.
+- **Avoid Inline Functions & Objects** in JSX** to prevent re-creation on every render.
+- **Batch State Updates** using React’s automatic batching in React 18+.
+
+---
+
+#### 2️⃣ Optimize State Management
+- **Use Context API efficiently** – Avoid unnecessary re-renders by using `useContext` only where needed.
+- **Use Efficient State Management** – Use Redux Toolkit, Zustand, or Recoil instead of excessive prop drilling.
+- **Minimize State Updates** – Store transient UI states (like modals, dropdowns) in local component state rather than global state.
+
+---
+
+#### 3️⃣ Reduce Bundle Size & Optimize Asset Loading
+- **Tree Shaking** – Ensure unused code is removed by using ES6 module imports properly.
+- **Code Splitting** – Use `React.lazy()` & dynamic imports (`import()` syntax) for on-demand loading.
+- **Optimize Images** – Use WebP format, lazy loading (`loading="lazy"`), and CDNs for assets.
+- **Use SVG Instead of PNGs** where possible for scalable graphics.
+- **Minify & Compress Files** – Use tools like Terser, UglifyJS, and Brotli compression.
+
+---
+
+#### 4️⃣ Optimize API Calls & Data Fetching
+- **Use SWR or React Query** to handle API caching, pagination, and background re-fetching.
+- **Debounce API Requests** – Use lodash `debounce` for search bars or fast user interactions.
+- **Optimize Fetching** – Use GraphQL for efficient data retrieval, reducing over-fetching.
+- **Implement WebSockets** for real-time updates instead of polling.
+
+---
+
+#### 5️⃣ Improve Page Load Speed & UX
+- **Preload Critical Resources** – Use `<link rel="preload">` for fonts, scripts, and important assets.
+- **Reduce Unused CSS & JS** – Use tools like PurgeCSS and remove unnecessary dependencies.
+- **Optimize Web Vitals** – Reduce **Time to Interactive (TTI)**, **First Contentful Paint (FCP)** using Lighthouse reports.
+- **Enable HTTP/2 & GZIP/Brotli Compression** for faster network performance.
+
+---
+
+#### 6️⃣ Debugging & Monitoring
+- **Use React Developer Tools** to analyze component re-renders.
+- **Monitor Performance** using Lighthouse, WebPageTest, or React Profiler.
+- **Implement Error Boundaries** to gracefully handle UI crashes.
+- **Use Sentry or LogRocket** for real-time error tracking.
+
+---
+
+By following these optimizations, your React app will be **faster, more responsive, and more scalable**! 🚀💡
