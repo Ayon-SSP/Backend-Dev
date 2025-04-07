@@ -32,6 +32,7 @@ CSR: client side rendering.
 12. Thinking In React
 
 
+[Yt short](https://youtube.com/shorts/TAErhnUP09o?si=ndv-_7Y_pf_e3BOC)
 1. React is a JavaScript library for Focus on UI. created and maintained by Facebook.
 2. **routing and http request are not included in react.**
 3. Components based architecture. Only work in View layer. not like a MVC(Angular, JSP Servlets) or MVT(Django) framework.
@@ -773,7 +774,8 @@ root.render(
 1. Only works in development mode(Not production mode).
 2. This detects unintended side effects.
 3. It's a side effect of react.
-4. It executes twice.
+4. ensures that the components are pure and free of side effects.
+5. It executes twice.
   - React: first mount, unmount and then mount again. to check if there is any side effect.
   - UseEffect, momo, function body, call reducre call dispatcher. theas will be executed twice.
 
@@ -1730,7 +1732,7 @@ root.render(<Page />);
   - `useStore`: A hook that returns the Redux store instance, allowing you to access the store directly.
   - `useActions`: A custom hook that allows you to bind action creators to the dispatch function, making it easier to dispatch actions.
   - `useMappedState`: A custom hook that allows you to map the Redux store state to component props, similar to `mapStateToProps` in `connect()`.
-- 
+
 ```bash
 npm install redux react-redux
 ```

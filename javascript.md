@@ -115,6 +115,10 @@ x = new String(); or y = new Number();
 // Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
 
 ```
+#### Explain the difference between null and undefined.
+- `null` is an assignment value that represents no value or no object. It's often used to indicate that a variable should have no value.​
+- `undefined` means a variable has been declared but has not yet been assigned a value.​
+
 #### Operators:
 > [Link](https://www.w3schools.com/js/js_operators.asp)
 ```javascript
