@@ -13,21 +13,7 @@ CDN (Content Delivery Network)
 [YT Next js short's](https://www.youtube.com/shorts/Rpr-epDYNN4)
 
 
-**CDN** (Content Delivery Network):  [YT](https://youtu.be/RI9np1LWzqw?si=HcTgz8PJ6yW7eHiu)
-  - use to speed up the delivery of static HTML content for users all around the world.
-  - CDN should be used whenever HTTP traffic is served.
-  - To bring service closer to the users, CDN deploys servers at hundreds of locations all over the world. and thease server locations are called PoP(Point of Presence) `Edge server` server inside the PoP.
-  - different CDNs use different technologies to direct user's request to the closest PoP.
-    - 2 common ones are 
-        1. DNS-based routing each PoP has its own IP address
-        2. AnyCast network: all PoP share the same IP address
-   - each edge server acts as a reverse proxy with a huge content cache
-   - Edge server acts as a reverse proxy, and it holdes huge content cache.
-   - https://youtu.be/RI9np1LWzqw?t=122
 
-1. CDN can provide protection for DDos attaction.
-2. CDN has high availability.
-3. CDN can reply to user’s requestion from the nearest PoP.
 
 
 # OAuth 2

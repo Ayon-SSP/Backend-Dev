@@ -90,6 +90,7 @@ Architecture
 	b. JRE -> Java Runtime Environment ->supports execution application build on java (platform independant)| only gives the envirment | executing Java bytecode | libraries and other components necessary for running Java applications | When you install the JRE on your system, you can run Java programs without needing to compile them yourself
 	C. jvm -> java virtual machine (OS specific)
 				.class-> executed ->.class which is platform independant
+        eg. jar (Java ARchive) and .war (Web Application ARchive) files are OS-independent
 ```
 
 Why?
@@ -103,7 +104,7 @@ How ?
 - Run the Java program:
 ```bash
   javac -d . Main.java
-  java com.trainer.Main
+  java com.learn.basics.Main
 ```
 - Direct run the java file: it will compile and run the file
 ```bash
@@ -112,7 +113,7 @@ How ?
 - More than one class in a Folder with package:
 ```bash
 javac -d . *.java
-java com.training.learn.basics.Main AYON 'SSP - software specialist programmer' 1 23 0.4
+java com.learn.basics.Main AYON 'SSP - software specialist programmer' 1 23 0.4
 ```
   Step1 -> a. Syntax -> Main.class
   Step2 -> java Main-> loading the class-> checking is it valid file-> if valid -> output
@@ -121,13 +122,8 @@ java com.training.learn.basics.Main AYON 'SSP - software specialist programmer' 
 
 **CODE Explanation:**
 - Main Method: https://youtu.be/P-_Nzi_mCRo?si=e5UsnjQGmrB6R4Sb
-- *Code:* [src.com.training.learn.basics.\*.java] `tuts_java`
-- .java file must have one public class and it should be saved with the name of public class
-- ```
-  compile the code which has first line as package -> javac -d . *.java 
-  execute -> java com.training.Main3 (using the classified name of the class)
-  import classes from the other package? -> import -> public 
-  ```
+- *Code:* [com.learn.basics.\*.java] `java-coffee`
+- A .java file must have one public class, and the file name should match it. The JRE looks for the main method in that public class to start execution.
 
 ```java
 /*
@@ -136,12 +132,9 @@ public: outside of application, so that JVM can access it. allways starts with M
 (String[] args): additional parameter are passed during execution of program. 
                    => run time arguments are passed as string array. && it's a dinamic array.
                    => String[] class in java which handels alphanumeric values.
-className => pascal case  ||  methodName && variable => camelCase 
-![case types](https://khalilstemmler.com/blogs/camel-case-snake-case-pascal-case/)
 
-static: 
-1. When a Java program starts, the main method is the entry point for the JVM (Java Virtual Machine).
-2. If main were not static, the JVM would need to create an object of the class containing main to invoke it.
+static: The main method is the JVM's entry point; it must be static so it can run without creating an object.
+
 */
 public class Main {
     public static void main(String[] args) {
@@ -150,7 +143,8 @@ public class Main {
 }
 ```
 - Java is a platform independent language. *.class can be shared and runed on any OS.
-- one .java file can have `multiple classes` but only `one public class`.
+- A `.java` file can have multiple classes, but only one public class, and the file name must match that public class.
+
 
 Main main=new Main();
 
@@ -160,7 +154,6 @@ new	=> keyword used to allocate a memory to object
 Main() => default constructor/non parameterised constructor 
 	=> used in allocation of memory along with new keyword and always returns object
 	=> Its a special method which don't have a return type
-
 
 ## 👷‍♂️ Java style guide
 ### Java Package
@@ -462,6 +455,23 @@ If any class full fils below its a Java Bean
 4. No public arg-constructor
 
 
+
+
+
+
+
+
+
+
+
+#### New Keyword (Dynamic Memory Allocation):
+- Allocating memory to objects and data structures at runtime using the `new` keyword. Unlike languages like C or C++, Java handles memory management automatically through its built-in **Garbage Collector (GC)**.
+```java
+int[] numbers = new int[5];
+String name = new String("ChatGPT");
+Student student = new Student(); // Allocating memory for a Student object
+```
+TODO: ... continue
 
 
 
