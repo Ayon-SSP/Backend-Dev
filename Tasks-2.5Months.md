@@ -1,4 +1,38 @@
-# 🗓️ 5.5 + 3 + 3 Months (after Internship, summer break ) 
+# 🗓️ 6 Months of Preparation for 15LPA
+
+Base:
+1. Java + OOPs
+2. SQL + PL/SQL + DBMS                      - Progressing
+3. RESTful API + Web Services
+4. Data Structures and Algorithms + PS      - To Do
+5. Spring Boot + Microservices
+6. System Design
+7. Git + GitHub + CI/CD
+8. Agile Methodology + Jira
+
+Cherry on Top:
+1. JavaScript(ES6+) ReactJS + Redux
+2. HTML + CSS                               - Done
+3.  Cloud Computing (AWS, Azure, GCP)
+4.  Agile Methodology
+5.  SDLC (Software Development Life Cycle)
+
+Job search:
+8.  Soft Skills (Communication, Teamwork, Leadership)
+9.  Mock Interviews
+10. Resume Building
+11. LinkedIn Profile Optimization
+12. Networking (Connecting with Recruiters, Alumni, etc.)
+13. Job Search Strategies (Job Portals, Referrals, etc.)
+14. Interview Preparation (Technical, HR, Behavioral)
+15. Company Research (Understanding Company Culture, Values, etc.)
+16. Salary Negotiation Strategies
+
+
+
+
+
+#  5.5 + 3 + 3 Months (after Internship, summer break ) 
 - [x] DEV: Gohil Tech(React, redux, Spring-boot...)
 - [ ] 🪻 OBMS: Project.
 - [ ] 🪻 DBMS 
@@ -45,3 +79,33 @@ Frontend Dev
 ## Interview Preparation
 1. HR round (amazon principles)
 2. RWSL
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Skills
+
+
+### DBMS + SQL
+1. Oracle DB
+2. SQL
+3. PL/SQL
+4. Normalization | ACID | ER Model 
+
+
+
+## Target Companies
+1. Oracle
+2. MRI Software
+3. Mastercard (Spring Security, Microservices architecture, JWT authentication, Docker, CI/CD pipelines, MySQL)
+4. DevX commerce
+5. 

@@ -1,6 +1,8 @@
+For Quick Reference: [chatGPT](https://chatgpt.com/c/67f943ac-dca4-800f-8ab7-9b7ec1a4efa9)
+
+
 
 **origin/main vs main:**
-
 
 
 `git pull`: fetch and merge changes from the remote repository

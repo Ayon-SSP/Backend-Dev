@@ -69,8 +69,21 @@ function myFunk() {
   console.log(b); // ReferenceError: b is not defined
   console.log(c); // ReferenceError: c is not defined
 }
-
 ```
+Q: guess the output
+```javascript
+var a = 10;
+{
+  var a = 20;
+}
+let b = a; 
+{
+  let b = -20;
+}
+console.log(b); // b = 20
+```
+
+
 #### Data Types:
 ```javascript
 let x = 10; // Number
@@ -485,6 +498,17 @@ const y = x.getElementsByTagName("p");
    let subtract = () => console.log("Subtract");
    ```
 
+### Lexical scope 
+Lexical scope (also known as static scope) means that the accessibility of variables is determined by the location where they are declared in the source code. In JavaScript, this implies:
+- Inner functions have access to variables defined in their outer functions.
+- The scope is determined at the time of writing code, not during execution.
+- 
+> 📦 Think of It Like Nested Boxes
+> Imagine your code as a set of boxes within boxes:
+> - Each function is a box.
+> - A box can access variables in its own box and in any box it’s nested within.
+> - But it cannot access variables in boxes nested inside it.
+
 ### JavaScript Closures
 - A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope.
 ```js
@@ -590,3 +614,57 @@ async function myFunction() {
 myFunction();
 ```
 
+### Pure functions and impure functions
+**Pure functions:** Always returns the same output for the same input. | Has no side effects (it doesn’t modify anything outside of its scope: no DOM changes, no global variables, no file writes, etc.).
+```js
+function add(x, y) {
+  return x + y; // pure function
+} // add(2, 3) will always return 5
+```
+
+**Impure Functions:** Might return different outputs for the same input. | contains one or more side effects (it might modify external variables, interact with the DOM, make API calls, log to console, etc.).
+
+```
+// Example of an impure function modifying a global variable
+let counter = 0;
+
+function incrementCounter() {
+  counter++; // Modifies the global counter variable
+  return counter;
+}
+
+console.log(incrementCounter()); // Output: 1
+console.log(incrementCounter()); // Output: 2 (different from the previous output)
+
+// Example of an impure function depending on external input
+function generateRandomNumber() {
+  return Math.random(); // Depends on the current state of the random number generator
+}
+
+console.log(generateRandomNumber()); // Output: (some random number)
+console.log(generateRandomNumber()); // Output: (another random number)
+
+// Example of an impure function performing I/O
+function logMessage(message) {
+  console.log(message); // Performs an I/O operation (writing to the console)
+}
+
+logMessage("Hello, world!"); // Output: Hello, world! (printed to the console)
+```
+
+### Currying [YT short](https://youtube.com/shorts/zXGNrkAZGr8?si=GiBe8Cu5cVfAN9Cn)
+when we convert `f(a, b)` to `f(a)(b)` is called currying. It allows us to create a function that takes multiple arguments one at a time.
+```js
+const rectArea = function(l, b, h) {
+  return l * b * h;
+}
+// currying
+const curriedRectArea = function(l) {
+  return function(b) {
+    return function(h) {
+      return l * b * h;
+    };
+  };
+};
+const area = curriedRectArea(2)(3)(4); // 24
+```
